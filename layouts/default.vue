@@ -2,6 +2,8 @@
     <div>
           <header>
             <nav>
+            <NuxtLink to='/'> Ok shop </NuxtLink>
+
                 <ul>
                     <li>
                         <NuxtLink to='/'> home</NuxtLink>
