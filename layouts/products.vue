@@ -1,29 +1,45 @@
-<template>
+<template class="page">
 <div>
-    <header>
-        <nav>
-            <NuxtLink to='/products'> Ok shop </NuxtLink>
+    <header class="shadow-sm bg-white">
+        <nav class="container mx-auto flex justify-between p-4">
+            <NuxtLink to='/products' class="font-bold"> Ok shop Products  </NuxtLink>
+            <div class="cart">
+                <i class="material-icons mr-2">
+                            add_shopping_cart
+                 </i>
 
+
+                     <sup class="text-xl rounded-full bg-green w-2 h-2">{{Counter}}</sup>
+
+            </div>
+             
         </nav>
     </header>
 </div>
-<div class="">
-    <slot></slot>
+<div class="container mx-auto p-4 ">
+    <slot ></slot>
 </div>
-<footer>
-    <ul>
+<footer class="container mx-auto p-4 flex border-t-2 justify-between">
+    <ul class="flex gap-4">
         <li>
-            <NuxtLink to='/'> home</NuxtLink>
-            <NuxtLink to='/about'> about</NuxtLink>
-            <NuxtLink to='/products'> products</NuxtLink>
-
-        </li>
+                        <NuxtLink to='/'> home</NuxtLink>
+                    </li>
+                    <li>
+                        <NuxtLink to='/about'> about</NuxtLink>
+                    </li> 
+                    <li>
+                        <NuxtLink to='/products' > Products</NuxtLink>
+                    </li> 
     </ul>
 </footer>
 </template>
 
 
 <script setup>
+const Counter = useCounter()
+
+
+console.log(Counter);
 
 </script>
 
@@ -37,6 +53,15 @@ a {
 }
 
 .router-link-active {
-    color: aqua;
+    color: green;
+}
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.4s;
+}
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  filter: blur(1rem);
 }
 </style>
