@@ -12,7 +12,7 @@
     "nuxt": "3.0.0"
   },
   "dependencies": {
-    "swiper": "^8.4.5",
+    "@pinia/nuxt": "^0.4.6",
     "vue-awesome-swiper": "^5.0.1"
   }
 }

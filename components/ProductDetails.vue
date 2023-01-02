@@ -17,23 +17,34 @@
                 <p  class="mb-2 ">
                     {{product.description}}
                 </p>
-                <button @click="Counter++" class="btn mt-7">
+                <button @click="pushToCart"  class="btn mt-7">
                     <i class="material-icons mr-2">
                         add_shopping_cart
                     </i>
                     <span>Add to cart</span>
                 </button>
-                <button v-if="Counter !== 0" class="btn mt-7 ml-2"> Checkout</button>
+                <button @click="removeFromCart" v-if="cartItems.cart.length !== 0" class="btn mt-7 ml-2"> remove fom cart</button>
+                <button @click="deleteFromCart" v-if="cartItems.cart.length !== 0" class="btn mt-7 ml-2"> Checkout</button>
             </div>
         </div>
     </div>
 </template>
 
 <script setup>
+import { useCartStore } from '~~/stores/cart.js';
 
-const {product,}= defineProps(['product' ]);
-const Counter = useCounter()
+const {product}= defineProps(['product' ]);
+const cartItems = useCartStore();
 
+const pushToCart =computed(()=> {
+    const quantity= ref(1)
+    cartItems.addProductToCart(product, quantity)
+    console.log(product.id);
+   
+})
+const deleteFromCart = computed(()=> {
+    cartItems.removeProductFromCart(product, quantity)
+})
 
 </script>
 

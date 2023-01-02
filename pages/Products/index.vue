@@ -1,17 +1,24 @@
 <template class="page">
     <div class="grid grid-cols-4 gap-4">
-        <div  v-for="p in products">
+        <div  v-for="p in productStore.products.data">
             <ProductCards :product="p"></ProductCards>
     </div>
     </div>
 </template>
 
 <script setup>
+// import modules
+   import {useProductStore} from '~~/stores/store'
+
+// define layouts
  definePageMeta({
     layout:'products'
 })
+// use store data
+const productStore = useProductStore()
 
-const {data:products} = await useFetch('https://fakestoreapi.com/products')
+productStore.getProducts();
+
 
 </script>
 
