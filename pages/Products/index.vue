@@ -1,7 +1,7 @@
 <template class="page">
     <div class="grid grid-cols-4 gap-4">
         <div  v-for="p in productStore.products.data">
-            <ProductCards :product="p"></ProductCards>
+            <ProductCards  :product="p"></ProductCards>
     </div>
     </div>
 </template>

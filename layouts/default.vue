@@ -1,9 +1,9 @@
 <template>
     <div>
           <header class="shadow-sm bg-white">
-            <nav class="container mx-auto p-4 flex justify-between ">
+            <nav class="container mx-auto px-4 py-2 flex justify-between ">
             <NuxtLink to='/' class="font-bold"> Ok shop </NuxtLink>
-
+                <Search></Search>
                 <ul class="flex gap-4">
                     <li>
                         <NuxtLink to='/'> home</NuxtLink>
@@ -20,12 +20,13 @@
             </nav>
         </header>
     </div>
-    <div class="container mx-auto p-4">
-        <slot></slot>
+    <div class="h-max   backdrop-blur-lg  mx-auto p-4">
+        <slot class="container"></slot>
     </div>
 </template>
 
 <script setup>
+
 </script>
 
 <style lang="scss" scoped>

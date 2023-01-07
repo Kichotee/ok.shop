@@ -19,7 +19,15 @@ export const useProductStore = defineStore(
 					"https://fakestoreapi.com/products/"
 				);
 			},
-			addToCart() {
+			cheaperProducts() {
+				if (this.products.length!==0) {
+					
+					this.products.filter((product)=>{
+						if (product.price > 0) {
+                            return product;}
+					})
+				}
+				
 				
 			}
 		},
