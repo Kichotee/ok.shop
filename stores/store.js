@@ -19,6 +19,9 @@ export const useProductStore = defineStore(
 					"https://fakestoreapi.com/products/"
 				);
 			},
+			addToCart() {
+				
+			}
 		},
 	}
 );

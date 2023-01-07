@@ -1,23 +1,16 @@
 <template>
 <div>
+    
+    <div class="h-[75vh] flex justify-center items-center w-[90%] bg-orange-400 mx-auto mt-2 relative rounded-lg overflow-hidden">
+     <img src="../assets/images/—Pngtree—modern single blue couch sofa_8408376.png" alt="" class="  w-[60%] absolute right-[-15%] rounded-lg">
+    <div class=" w-1/2 absolute left-2 ">
 
-    <h2 class="font-bold text-3xl">
-        OK. <span class="text-green-300 text-4xl italic ">Shop</span>
-    </h2>
-    <div v-if="productStore.length!==0" class="h-[60vh] flex justify-center items-center w-4/5  mx-auto mt-2">
-      <div class="img-box w-full max-w-full h-full flex justify-center items-center" v-for="(product, index) in productStore.products.data" :key="index"  v-show="currentData==index">
-        <i @click="Prev" class="material-icons cursor-pointer">
-          chevron_left
-        </i>
-        
-            <img  :src="product.image" alt class="w-2/4 h-full mx-auto">
-        
-            <i @click="Next" class="material-icons cursor-pointer ">
-                chevron_right
-            </i>
-        </div>
-        
+        <p class="text-5xl font-bold ">
+           Get affordable household materials
+        </p>
     </div>
+</div>
+<NuxtLink to="/products">Check them out</NuxtLink>
 </div>
 </template>
 

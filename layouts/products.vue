@@ -8,7 +8,7 @@
                     add_shopping_cart
                 </i>
 
-                <sup class="text-xl rounded-full bg-green w-2 h-2">{{cartStore.cart.length}}</sup>
+                <sup class="text-xl rounded-full bg-green w-2 h-2">{{cartStore.totalProducts()}}</sup>
 
             </div>
 
@@ -50,7 +50,7 @@ a {
 }
 
 .router-link-active {
-    color: green;
+    color: #FB923C;
 }
 
 .page-enter-active,
