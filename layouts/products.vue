@@ -15,10 +15,10 @@
         </nav>
     </header>
 </div>
-<div class="container mx-auto p-4 ">
+<div class="container mx-auto p-4 mb-24">
     <slot></slot>
 </div>
-<footer class="container mx-auto p-4 flex border-t-2 justify-between">
+<footer class=" fixed bottom-0 bg-gray-100 p-4 w-full flex border-t-2 justify-between">
     <ul class="flex gap-4">
         <li>
             <NuxtLink to='/'> home</NuxtLink>
@@ -30,6 +30,14 @@
             <NuxtLink to='/products'> Products</NuxtLink>
         </li>
     </ul>
+    <div class="cart float-right">
+                <i class="material-icons mr-2">
+                    add_shopping_cart
+                </i>
+
+                <sup class="text-xl rounded-full bg-green w-2 h-2">{{cartStore.totalProducts()}}</sup>
+
+            </div>
 </footer>
 </template>
 

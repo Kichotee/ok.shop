@@ -1,22 +1,22 @@
 <template>
-	<div class="h-[100%] relative">
+	<div class="h-[100%] relative  w-full">
 		<input
 			type="search"
 			name=""
 			id=""
 			placeholder="Find what you need"
 			v-model="searchData"
-			class="border"
+			class="border  w-[80%] placeholder:text-center"
 		/>
 		<div
 			id="search-result"
-			class="absolute h-[40vh] bg-white mt-2 z-10 w-[100%] rounded overflow-hidden"
+			class="absolute h-[40vh] bg-white mt-2 z-10 w-[80%]  rounded overflow-x-hidden"
 			v-if="searchData != '' "
 		>
 			<p v-for="product in searchResult " class="mb-2 mx-auto w-max">
                 <NuxtLink :to="`/products/${product.id}`">
                 
-                    {{ product.title.substring(0,14) + '...' }}
+                    {{ product.title.substring(0,40) + '...' }}
                 </NuxtLink>
         </p>
 		</div>

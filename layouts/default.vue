@@ -1,10 +1,10 @@
 <template>
-    <div>
-          <header class="shadow-sm bg-white">
-            <nav class="container mx-auto px-4 py-2 flex justify-between ">
-            <NuxtLink to='/' class="font-bold"> Ok shop </NuxtLink>
-                <Search></Search>
-                <ul class="flex gap-4">
+    <div class="h-max">
+          <header class="shadow-lg bg-white fixed z-20 w-full h-[10%] top-0 ">
+            <nav class="container mx-auto px-2 py-2 grid grid-cols-4 justify-between items-center ">
+            <NuxtLink to='/' class="font-bold basis-[20%]"> Ok shop </NuxtLink>
+                <Search class="col-span-2"></Search>
+                <ul class="flex justify-between w-full">
                     <li>
                         <NuxtLink to='/'> home</NuxtLink>
                     </li>
@@ -20,7 +20,7 @@
             </nav>
         </header>
     </div>
-    <div class="h-max   backdrop-blur-lg  mx-auto p-4">
+    <div class=" bg-gray-100 ">
         <slot class="container"></slot>
     </div>
 </template>

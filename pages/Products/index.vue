@@ -1,14 +1,20 @@
 <template class="page">
-    <div class="grid grid-cols-4 gap-4">
+    <div class="grid grid-cols-4 gap-4 z-20 relative">
         <div  v-for="p in productStore.products.data">
             <ProductCards  :product="p"></ProductCards>
     </div>
+    <div class="absolute top-[40%] z-20">
+
+      
+    </div>
+   
     </div>
 </template>
 
 <script setup>
 // import modules
    import {useProductStore} from '~~/stores/store'
+
 
 // define layouts
  definePageMeta({

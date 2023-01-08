@@ -1,5 +1,5 @@
 <template>
-	<div class="card">
+	<div class="card" v-if="product!== null">
 		<div class="grid grid-cols-2 gap-10">
 			<div class="p-7">
 				<img
@@ -8,10 +8,14 @@
 					class="mx-auto my-7"
 				/>
 			</div>
-			<div class="p-7">
-				<h2 class="text-4xl my-7">
-					{{ product.title }}
-				</h2>
+			<div class="p-7 flex-col">
+				<div class="flex">
+
+					<h2 class="text-4xl my-7">
+						{{ product.title }}
+					</h2>
+					<vue3starRatings starColor="#Fb923C" v-model="product.rating.rate" starSize="16" :showControl="false" class="w-[80%] float-left"> </vue3starRatings>
+				</div>
 				<p class="text-xl my-7">
 					Price - ${{ product.price }}
 				</p>
@@ -46,12 +50,15 @@
 				>
 					Checkout
 				</button>
+
 			</div>
+
 		</div>
 	</div>
 </template>
 
 <script setup>
+import vue3starRatings from 'vue3-star-ratings'
 	import { useCartStore } from "~~/stores/cart.js";
 
 	const { product } = defineProps(["product"]);

@@ -1,7 +1,8 @@
 <template>
-	<div>
+	<div class="pt-24 z-10 relative">
+
 		<div
-			class="h-[75vh] w-[90%] bg-orange-400 mx-auto mt-2 relative rounded-lg scroll-smooth"
+			class="h-[70vh] w-[90%] bg-orange-400 mx-auto  relative rounded-lg scroll-smooth"
 		>
 			<div
 				v-for="(item, index) in imageData"
@@ -21,16 +22,16 @@
 			</div>
 		</div>
 
-		<div class="h-max mt-12">
+		<div class="h-max mt-12 container pt-24 z-20 relative  mx-auto">
 			<div
-				class="bg-gray-300 py-2 px-1 rounded-t-xl"
+				class="bg-black/50 py-2 px-1 rounded-t-xl"
 			>
 				<h3 class="font-bold text-orange-400">
 					Products under 20$
 				</h3>
 			</div>
 			<div
-				class="grid grid-cols-5 gap-2 w-full h-[20%] justify-around grid-rows-1 container p-4 mx-auto"
+				class="grid grid-cols-5 gap-2 w-full h-[10%] justify-around grid-rows-1 pt-4 "
 			>
 				<div
 					class="h-[90%]"
@@ -46,16 +47,16 @@
 				</div>
 			</div>
 		</div>
-		<div class="h-max">
+		<div class="h-max container pt-24 z-20 relative mx-auto">
 			<div
-				class="bg-gray-300 py-2 px-1 rounded-t-xl"
+				class="bg-stone-500 py-2 px-1 rounded-t-xl"
 			>
 				<h3 class="font-bold text-orange-400">
 					Users' favorites
 				</h3>
 			</div>
 			<div
-				class="grid grid-cols-5 gap-2 w-full h-[20%] justify-around grid-rows-1 container p-4 mx-auto"
+				class="grid grid-cols-5 gap-2 w-full h-[20%] justify-around grid-rows-1  pt-4 "
 			>
 				<div
 					class="h-[90%]"
@@ -73,6 +74,11 @@
 				</div>
 			</div>
 		</div>
+		<newsletter/>
+		<FooterView/>
+		<!-- <svg class="absolute top-[30%] z-0 right-[0%]" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <path fill="#FB923C" d="M52.6,-53.7C58.9,-46.2,48.5,-23.1,47.9,-0.6C47.3,22,56.7,44,50.3,51C44,58,22,50,3.5,46.6C-15.1,43.1,-30.2,44.2,-44.7,37.2C-59.2,30.2,-73.2,15.1,-74.2,-1C-75.2,-17,-63.2,-34.1,-48.6,-41.6C-34.1,-49.1,-17,-47.1,3,-50.1C23.1,-53.1,46.2,-61.2,52.6,-53.7Z" transform="translate(100 100)" />
+</svg> -->
 	</div>
 </template>
 
@@ -80,7 +86,7 @@
 	import { useProductStore } from "../stores/store";
 	import image1 from "~/assets/img/image1.png";
 	import image2 from "~/assets/img/image2.png";
-	import image3 from "~/assets/img/image3.png";
+	import image3 from "~/assets/img/image2.png";
 
 	const productStore = useProductStore();
 
