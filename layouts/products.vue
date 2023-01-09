@@ -18,7 +18,7 @@
 <div class="container mx-auto p-4 mb-24">
     <slot></slot>
 </div>
-<footer class=" fixed bottom-0 bg-gray-100 p-4 w-full flex border-t-2 justify-between">
+<footer class=" fixed bottom-0 bg-gray-100 p-4 w-full flex border-t-2 justify-between z-40">
     <ul class="flex gap-4">
         <li>
             <NuxtLink to='/'> home</NuxtLink>

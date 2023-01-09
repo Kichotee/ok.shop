@@ -1,9 +1,9 @@
 <template>
-    <div class="card  text-center hover:scale-105 duration-500 relative z-30 " :class='`${ [`/products`].includes($route.path)}`? "h-[80%]": null '>
+    <div class="card  text-center hover:scale-105 duration-500  z-0 h-[38vh]" :class='`${ [`/products`].includes($route.path)}`? "h-[50vh]": null '>
         <img :src="product.image" alt="product thumb" class="thumb">
         <p class="font-bold text-gray-500 m-4 truncate"></p>
         <NuxtLink :to="`/products/${product.id}`">
-            <button class="btn my-4 h-[15%]">
+            <button class="btn my-6 h-[20%]">
                 view Details
             </button>
             <p  class='text-md text-gray-400 text-xs'>
@@ -12,7 +12,7 @@
             </p>
         </NuxtLink>
         
-        <vue3starRatings starColor="#Fb923C" v-model="product.rating.rate" starSize="8" :showControl="false" class=" "> </vue3starRatings>
+        <vue3starRatings starColor="#Fb923C" v-model="product.rating.rate" starSize="8" :showControl="false" class="w-[20%]" :class='`${[`/products`].includes($route.path)}`? "w-full": "w-0" '> </vue3starRatings>
     </div>
 </template>
 

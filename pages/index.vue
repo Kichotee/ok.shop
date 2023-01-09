@@ -1,26 +1,27 @@
 <template>
 	<div class="pt-24 z-10 relative">
-
-		<div
-			class="h-[70vh] w-[90%] bg-orange-400 mx-auto  relative rounded-lg scroll-smooth"
-		>
-			<div
-				v-for="(item, index) in imageData"
-				v-show="index == currentData"
-				class="relative h-full w-full flex justify-center items-center overflow-hidden"
-			>
-				<img
-					:src="`${item.imageSrc}`"
-					alt=""
-					class="w-[50%] absolute right-[-15%] rounded-lg"
-				/>
-				<div class="w-1/2 absolute left-2">
-					<p class="text-5xl font-bold">
-						{{ item.imageText }}
-					</p>
-				</div>
-			</div>
-		</div>
+		<Transition name="showcase" appear>
+					<div
+						class="h-[70vh] w-[90%] bg-orange-400 mx-auto  relative rounded-lg scroll-smooth"
+					>
+						<div
+							v-for="(item, index) in imageData"
+							v-show="index == currentData"
+							class="relative h-full w-full flex justify-center items-center overflow-hidden"
+						>
+							<img
+								:src="`${item.imageSrc}`"
+								alt=""
+								class="w-[50%] absolute right-[-15%] rounded-lg"
+							/>
+							<div class="w-1/2 absolute left-2">
+								<p class="text-5xl font-bold">
+									{{ item.imageText }}
+								</p>
+							</div>
+						</div>
+					</div>
+		</Transition>
 
 		<div class="h-max mt-12 container pt-24 z-20 relative  mx-auto">
 			<div
@@ -31,10 +32,10 @@
 				</h3>
 			</div>
 			<div
-				class="grid grid-cols-5 gap-2 w-full h-[10%] justify-around grid-rows-1 pt-4 "
+				class="grid grid-cols-5 gap-2 w-full  justify-around h-[60vh] pt-4 "
 			>
 				<div
-					class="h-[90%]"
+					class="h-[70%]"
 					v-for="p in productStore.products.data
 						.filter(
 							(product) => product.price < 20
@@ -47,7 +48,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="h-max container pt-24 z-20 relative mx-auto">
+		<div class="h-max container  z-20 relative mx-auto">
 			<div
 				class="bg-stone-500 py-2 px-1 rounded-t-xl"
 			>
@@ -56,7 +57,7 @@
 				</h3>
 			</div>
 			<div
-				class="grid grid-cols-5 gap-2 w-full h-[20%] justify-around grid-rows-1  pt-4 "
+				class="grid grid-cols-5 gap-2 w-full  justify-around grid-rows-1 h-[70vh] pt-4 "
 			>
 				<div
 					class="h-[90%]"
@@ -87,6 +88,8 @@
 	import image1 from "~/assets/img/image1.png";
 	import image2 from "~/assets/img/image2.png";
 	import image3 from "~/assets/img/image2.png";
+	import gsap from "gsap"
+	
 
 	const productStore = useProductStore();
 
@@ -139,4 +142,16 @@
 		opacity: 0;
 		filter: blur(1rem);
 	}
+	.showcase-enter-active,
+	.showcase-leave-active {
+		transition: all 2s;
+	}
+
+	.showcase-enter-from,
+	.showcase-leave-to {
+		opacity: 0;
+		translate: 0 -100%;
+		filter: blur(1rem);
+	}
+
 </style>

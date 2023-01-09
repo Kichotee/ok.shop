@@ -15,11 +15,16 @@ export const useCartStore = defineStore(
 				cart: [],
 			};
 		},
+// add  product to cart or increase quantity of product
 
 		actions: {
 			addProductToCart( product, quantity ) {
+// destructure all product properties in cartItem 
 				const cartItem=	{...product, quantity}
+				
+// find products in cart 
 				const productInCart= this.cart.find(item => item.id === product.id)
+// increment quantity if Found else add product to cart
 				if (productInCart) {	
 					productInCart.quantity ++
 				}
@@ -27,11 +32,23 @@ export const useCartStore = defineStore(
                     this.cart.push(cartItem)}
 				this.updateLocalStorage()
 			},
-            removeProductFromCart( product ) {
+// remove existing product from cart or reduce quantity of product
+
+			removeProductFromCart( product, quantity ) {
+				const cartItem=	{...product, quantity}
+				const productInCart= this.cart.find(item => item.id === product.id)
+				if (productInCart && productInCart.quantity > 0) {	
+					productInCart.quantity --
+				}
+				else {
+                    this.cart.splice(this.cart.indexOf(cartItem), 1)
+				}
+				this.updateLocalStorage()
+			},
+			// clear cart functionality
+            clearCart(  ) {
 				
-				this.cart = this.cart.filter((item)=>{
-					return item.id !== product.id
-				})
+				this.cart = []
 
 			this.updateLocalStorage();
             },
@@ -43,20 +60,22 @@ export const useCartStore = defineStore(
 				if (localStorage.getItem('products-list'))
 				  this.cart = JSON.parse(localStorage.getItem('products-list'));
 			  },
-			totalProducts(){
-				let quantityCart = this.cart.map(function(j) {
-					return j.quantity;
-				  })
-			return quantityCart.reduce((a,b)=> a+b, 0)
-				
-			  },
-			totalPrice(){
+// calculate number of product in cart
+			  totalProducts(){
+				  let quantityCart = this.cart.map(function(j) {
+					  return j.quantity;
+					})
+					return quantityCart.reduce((a,b)=> a+b, 0)
+					
+				},
+// calculate price of product in cart
+				totalPrice(){
 				let priceCart = this.cart.map(function(j) {
 					return j.price*j.quantity;
 				  })
 			
 			const totalPrice= priceCart.reduce((a,b)=> a+b, 0)
-				  console.log( totalPrice);
+				 return (totalPrice)
 				}
 		},
 	}

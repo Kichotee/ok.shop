@@ -27,13 +27,7 @@ export default defineNuxtConfig({
                   rel:'stylesheet', href:'https://fonts.googleapis.com/icon?family=Material+Icons',
                },
             ],
-            script:[
-               {
-                  
-                  hid:'script',  src:'<script src="https://kit.fontawesome.com/38b393d179.js" crossorigin="anonymous"></script>'
-               }
-
-            ]
+          
          },
          pageTransition: { name: 'page', mode: 'out-in' },
       },
