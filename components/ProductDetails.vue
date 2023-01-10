@@ -60,17 +60,17 @@
 					@click.self="showCheckOut = false"
 				>
 				<Transition name="checkout-box" appear>
-
 					<Checkout/>
-
 				</Transition>
 				</div>
 			</transition>
 		</Teleport>
 	</div>
 	<p>Similar Products</p>
+
+
 	<div class="max-h-[50vh]  mt-2 overflow-x-scroll overflow-y-hidden " id="similar-products">
-		<div class="max-h-[45vh] h-[45vh]  w-full flex  gap-4 mt-4 justify-evenly overflow-x-scroll overflow-y-hidden" id="items">
+		<div class="max-h-[45vh] h-[45vh]  w-full flex  gap-4 mt-4 justify-evenly overflow-x-scroll overflow-y-hidden sm" id="items">
 			<div
 						class="w-1/4 mt-4 h-[40vh] "
 						v-for="p in category "
@@ -114,9 +114,7 @@
 			}
 		))
 	})
-	const getTotal = () => {
-		return cartItems.totalPrice();
-	};
+	
 </script>
 
 <style lang="scss" scoped>

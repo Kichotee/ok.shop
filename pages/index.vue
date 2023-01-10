@@ -1,21 +1,21 @@
 <template>
-	<div class="pt-24 z-10 relative">
+	<div class="pt-24 z-10 relative overflow-x-hidden">
 		<Transition name="showcase" appear>
 					<div
-						class="h-[70vh] w-[90%] bg-orange-400 mx-auto  relative rounded-lg scroll-smooth"
+						class="h-[70vh] w-[90%] bg-orange-400  z-20 mx-auto  relative rounded-lg scroll-smooth duration-500"
 					>
 						<div
 							v-for="(item, index) in imageData"
 							v-show="index == currentData"
-							class="relative h-full w-full flex justify-center items-center overflow-hidden"
+							class=" h-full w-full  flex flex-col-reverse pt-4  md:flex-row-reverse justify-center items-center overflow-hidden md:translate-x-24 absolute z-10"
 						>
 							<img
 								:src="`${item.imageSrc}`"
 								alt=""
-								class="w-[50%] absolute right-[-15%] rounded-lg"
+								class="w-3/5 md:w-1/2 basis-3/4 rounded-lg"
 							/>
-							<div class="w-1/2 absolute left-2">
-								<p class="text-5xl font-bold">
+							<div class="w-full justify-self-center basis-1/4 px-2 text-center">
+								<p class="text-5xl font-bold ">
 									{{ item.imageText }}
 								</p>
 							</div>
@@ -23,24 +23,25 @@
 					</div>
 		</Transition>
 
-		<div class="h-max mt-12 container pt-24 z-20 relative  mx-auto">
+		<div class="h-max mt-12 container pt-24 z-20 relative  mx-auto " id="product-under-20">
 			<div
 				class="bg-black/50 py-2 px-1 rounded-t-xl"
 			>
-				<h3 class="font-bold text-orange-400">
+				<h3 class="font-bold text-orange-400 text-center md:text-left">
 					Products under 20$
 				</h3>
 			</div>
 			<div
-				class="grid grid-cols-5 gap-2 w-full  justify-around h-[60vh] pt-4 "
+				class="flex px-4 h-[40vh] md:grid overflow-y-hidden overflow-x-auto md:overflow-hidden border md:grid-cols-5 gap-4 w-max md:w-full  justify-around md:h-[60vh] pt-4 "
 			>
 				<div
-					class="h-[70%]"
+					class="h-[30vh] w-[50vw] md:w-full"
 					v-for="p in productStore.products.data
 						.filter(
 							(product) => product.price < 20
 						)
 						.slice(0, -1)"
+
 				>
 					<ProductCards
 						:product="p"
@@ -52,15 +53,16 @@
 			<div
 				class="bg-stone-500 py-2 px-1 rounded-t-xl"
 			>
-				<h3 class="font-bold text-orange-400">
+				<h3 class="font-bold text-orange-400 text-center md:text-left">
 					Users' favorites
 				</h3>
 			</div>
 			<div
-				class="grid grid-cols-5 gap-2 w-full  justify-around grid-rows-1 h-[70vh] pt-4 "
+				class="flex px-4 h-[45vh] md:grid md:grid-cols-5 gap-2 md:w-full w-[40vh*5] overflow-x-auto md:overflow-x-hidden  justify-around grid-rows-1  pt-4 "
 			>
-				<div
+				<transition-group tag="div" appear @before-enter="productBeforeEnter" @enter="productEnter"
 					class="h-[90%]"
+					:key="p"
 					v-for="p in productStore.products.data
 						.filter(
 							(product) =>
@@ -72,14 +74,12 @@
 					<ProductCards
 						:product="p"
 					></ProductCards>
-				</div>
+				</transition-group >
 			</div>
 		</div>
 		<newsletter/>
 		<FooterView/>
-		<!-- <svg class="absolute top-[30%] z-0 right-[0%]" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
-  <path fill="#FB923C" d="M52.6,-53.7C58.9,-46.2,48.5,-23.1,47.9,-0.6C47.3,22,56.7,44,50.3,51C44,58,22,50,3.5,46.6C-15.1,43.1,-30.2,44.2,-44.7,37.2C-59.2,30.2,-73.2,15.1,-74.2,-1C-75.2,-17,-63.2,-34.1,-48.6,-41.6C-34.1,-49.1,-17,-47.1,3,-50.1C23.1,-53.1,46.2,-61.2,52.6,-53.7Z" transform="translate(100 100)" />
-</svg> -->
+		
 	</div>
 </template>
 
@@ -88,12 +88,14 @@
 	import image1 from "~/assets/img/image1.png";
 	import image2 from "~/assets/img/image2.png";
 	import image3 from "~/assets/img/image2.png";
-	import gsap from "gsap"
-	
+	import {gsap} from "gsap";
+	import scrollTrigger from 'gsap/ScrollTrigger'
 
 	const productStore = useProductStore();
 
 	productStore.getProducts();
+	gsap.registerPlugin(scrollTrigger)
+
 
 	const imageData = [
 		{
@@ -110,6 +112,29 @@
 			imageText: "Buy all the clothes you need",
 		},
 	];
+	const productBeforeEnter = (el) => {
+            el.style.opacity = 0
+            el.style.transform = 'translateY(-10%)'
+            
+    }
+	const productEnter = (el)=>{
+		gsap.to(
+                el, {
+                    scrollTrigger: {
+                        target: el,
+                        toggleActions: "play reverse play none ",
+                        start: "18% 10%",
+                        end: "30% center",
+                        // markers: true,
+                    },
+                    duration: 3,
+                    y: 0,
+                    opacity: 1,
+                    ease: 'elastic',
+                    delay: el.dataset.index * 0.5,
+                }
+            )
+	}
 
 	const currentData = ref(0);
 	const Next = () => {
@@ -129,6 +154,7 @@
 	setInterval(() => {
 		Prev();
 	}, 5000);
+
 </script>
 
 <style scoped>

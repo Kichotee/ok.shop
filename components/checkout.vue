@@ -30,7 +30,7 @@
 		return( store.cart)
 	});
     const getTotal = () => {
-		return cartItems.totalPrice();
+		return store.totalPrice();
 	};
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-    <div class="card  text-center hover:scale-105 duration-500  z-0 h-[38vh]" :class='`${ [`/products`].includes($route.path)}`? "h-[50vh]": null '>
+    <div class="card  text-center hover:scale-105 duration-500 w-[50vw] md:w-full z-0 h-[35vh] md:h-[40vh] " >
         <img :src="product.image" alt="product thumb" class="thumb">
         <p class="font-bold text-gray-500 m-4 truncate"></p>
         <NuxtLink :to="`/products/${product.id}`">
@@ -12,7 +12,7 @@
             </p>
         </NuxtLink>
         
-        <vue3starRatings starColor="#Fb923C" v-model="product.rating.rate" starSize="8" :showControl="false" class="w-[20%]" :class='`${[`/products`].includes($route.path)}`? "w-full": "w-0" '> </vue3starRatings>
+        <!-- <vue3starRatings starColor="#Fb923C" v-model="product.rating.rate" starSize="8" :showControl="false" class="w-[10%]" > </vue3starRatings> -->
     </div>
 </template>
 
