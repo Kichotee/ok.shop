@@ -1,8 +1,8 @@
 <template>
-	<div class="pt-24 z-10 relative overflow-x-hidden">
+	<div class="md:pt-24 pt-32  z-10 relative overflow-x-hidden">
 		<Transition name="showcase" appear>
 					<div
-						class="h-[70vh] w-[90%] bg-orange-400  z-20 mx-auto  relative rounded-lg scroll-smooth duration-500"
+						class="sticky left-0 w-screen h-[50vh] md:h-[70vh] md:w-[90%] bg-orange-400  z-20 mx-auto  md:relative rounded-lg scroll-smooth duration-500"
 					>
 						<div
 							v-for="(item, index) in imageData"
@@ -14,7 +14,7 @@
 								alt=""
 								class="w-3/5 md:w-1/2 basis-3/4 rounded-lg"
 							/>
-							<div class="w-full justify-self-center basis-1/4 px-2 text-center">
+							<div class="w-full justify-self-center basis-1/4 px-2 text-center md:text-left">
 								<p class="text-5xl font-bold ">
 									{{ item.imageText }}
 								</p>
@@ -23,7 +23,7 @@
 					</div>
 		</Transition>
 
-		<div class="h-max mt-12 container pt-24 z-20 relative  mx-auto " id="product-under-20">
+		<div class="h-max  container pt-24 z-20 relative  mx-auto " id="product-under-20">
 			<div
 				class="bg-black/50 py-2 px-1 rounded-t-xl"
 			>
@@ -32,10 +32,13 @@
 				</h3>
 			</div>
 			<div
-				class="flex px-4 h-[40vh] md:grid overflow-y-hidden overflow-x-auto md:overflow-hidden border md:grid-cols-5 gap-4 w-max md:w-full  justify-around md:h-[60vh] pt-4 "
+				class="  px-2 h-[50vh]  md:overflow-hidden  gap-4  md:w-full md:h-[60vh] pt-4 "
 			>
-				<div
-					class="h-[30vh] w-[50vw] md:w-full"
+			<div class="overflow-x-scroll  md:overflow-hidden md:grid-cols-5  md:grid h-full flex gap-4 md:w-full whitespace-nowrap">
+
+
+				<span
+					class="h-[90%]  md:w-full"
 					v-for="p in productStore.products.data
 						.filter(
 							(product) => product.price < 20
@@ -46,7 +49,8 @@
 					<ProductCards
 						:product="p"
 					></ProductCards>
-				</div>
+				</span>
+			</div>
 			</div>
 		</div>
 		<div class="h-max container  z-20 relative mx-auto">
@@ -58,9 +62,11 @@
 				</h3>
 			</div>
 			<div
-				class="flex px-4 h-[45vh] md:grid md:grid-cols-5 gap-2 md:w-full w-[40vh*5] overflow-x-auto md:overflow-x-hidden  justify-around grid-rows-1  pt-4 "
+				class=" px-4 h-[55vh]  gap-2 md:w-full whitespace-nowrap  md:overflow-hidden  justify-around grid-rows-1  pt-4 "
 			>
-				<transition-group tag="div" appear @before-enter="productBeforeEnter" @enter="productEnter"
+			<div class="overflow-x-scroll md:overflow-hidden h-full md:grid-cols-5 md:grid md flex gap-4 md:w-full whitespace-nowrap">
+			
+				<transition-group tag="span" appear @before-enter="productBeforeEnter" @enter="productEnter"
 					class="h-[90%]"
 					:key="p"
 					v-for="p in productStore.products.data
@@ -75,6 +81,9 @@
 						:product="p"
 					></ProductCards>
 				</transition-group >
+			
+			
+			</div>
 			</div>
 		</div>
 		<newsletter/>

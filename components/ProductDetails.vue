@@ -1,54 +1,59 @@
 <template>
-	<div class="card" v-if="product !== null">
-		<div class="grid grid-cols-2 gap-10">
-			<div class="p-7">
-				<img
+	<div class="card md:text-left text-center overflow-x-hidden" v-if="product !== null">
+		<div class="grid md:grid-cols-2 grid-rows-3 md:gap-10">
+			<div class=" h-[60%] md:h-max md:p-7 row-span-1">
+				<img 
+				id="productShow-img"
 					:src="product.image"
 					alt="Product-image"
-					class="mx-auto my-7"
 				/>
 			</div>
-			<div class="p-7 flex-col">
-				<div class="flex">
-					<h2 class="text-4xl my-7" :class="product.title.length>40?'text-[1rem] font-bold leading-8':'' ">
+			<div class="md:p-7 flex-col h-[60%] md:h-max row-span-2 ">
+				<div class="flex flex-col md:flex-row items-baseline">
+					<h2 class="text-4xl md:my-7 my-2 " :class="product.title.length>40?'text-[1rem] font-bold leading-8':'' ">
 						{{ product.title }}
 					</h2>
 					<vue3starRatings starColor="#Fb923C" v-model="product.rating.rate" starSize="16" :showControl="false" class="w-[80%] float-left"> </vue3starRatings>
 				</div>
-				<p class="text-xl my-7">
+				<p class="text-xl my-7 text-center">
 					Price - ${{ product.price }}
 				</p>
 				<h3
-					class="font-bold border-b-2 mb-4 pb-2"
+					class="font-bold border-b-2 mb-4 pb-2  "
 				>
 					Product description:
 				</h3>
 				<p class="mb-2">
 					{{ product.description }}
 				</p>
-				<button
-					@click="pushToCart"
-					class="btn mt-7"
-				>
-					<i class="material-icons mr-2">
-						add_shopping_cart
-					</i>
-					<span>Add to cart</span>
-				</button>
-				<button
-					@click="removeFromCart"
-					v-if="cartItems.cart.length !== 0"
-					class="btn mt-7 ml-2"
-				>
-					remove fom cart
-				</button>
-				<button
-					@click="showCheckOut = true"
-					v-if="cartItems.cart.length !== 0"
-					class="btn mt-7 ml-2"
-				>
-					Checkout
-				</button>
+				<div class=" flex flex-col md:flex-row">
+
+					<button
+						@click="pushToCart"
+						class="btn mt-7"
+					>
+						<i class="material-icons mr-2">
+							add_shopping_cart
+						</i>
+						<span>Add to cart</span>
+					</button>
+					<button
+						@click="removeFromCart"
+						v-if="cartItems.cart.length !== 0"
+						class="btn mt-7 ml-2"
+					>
+						remove fom cart
+					</button>
+					<button
+						@click="showCheckOut = true"
+						v-if="cartItems.cart.length !== 0"
+						class="btn mt-7 ml-2"
+					>
+						Checkout
+					</button>
+
+
+				</div>
 			</div>
 		</div>
 		<Teleport  to="body">
@@ -66,19 +71,19 @@
 			</transition>
 		</Teleport>
 	</div>
-	<p>Similar Products</p>
+	<p class="my-4">Similar Products</p>
 
 
-	<div class="max-h-[50vh]  mt-2 overflow-x-scroll overflow-y-hidden " id="similar-products">
-		<div class="max-h-[45vh] h-[45vh]  w-full flex  gap-4 mt-4 justify-evenly overflow-x-scroll overflow-y-hidden sm" id="items">
-			<div
-						class="w-1/4 mt-4 h-[40vh] "
+	<div class=" px-4 h-[55vh]  gap-2 md:w-full whitespace-nowrap  md:overflow-hidden  pt-4 " id="similar-products">
+		<div class="overflow-x-scroll md:overflow-hidden h-full md:grid-cols-5 md:grid flex gap-4  md:w-full  " id="items">
+			<span
+						class=" h-[40vh] "
 						v-for="p in category "
 					>
 						<ProductCards
 							:product="p"
 						></ProductCards>
-					</div>
+					</span>
 		</div>
 
 	</div>
@@ -118,7 +123,7 @@
 </script>
 
 <style lang="scss" scoped>
-	img {
+	productShow-img {
 		max-width: 400px;
 	}
 	.popup {

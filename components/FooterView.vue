@@ -1,5 +1,5 @@
 <template>
-	<div class="h-[60vh] md:h-[80vh] bg-orange-500">
+	<div class="h-[40vh] md:h-[80vh] bg-orange-500">
 		<footer
 			id="footer h-full"
 			class="h-full"
@@ -56,14 +56,14 @@
             </div>
            
         </div>
-        <div class="flex flex-col  items-center w-full md:grid md:grid-cols-5 container mx-auto h-[30%] pt-8">
-            <div class="md:col-span-3 md:w-full flex flex-col items-center md:flex-row gap-48 ">
-                <div class="font-bold text-4xl text-yellow-100">
+        <div class="flex flex-col  w-full md:grid md:grid-cols-5 container mx-auto h-[30%] pt-8">
+            <div class="md:col-span-3 flex flex-col md:w-full  md:flex-row gap-48 ">
+                <div class="font-bold text-2xl md:text-4xl text-yellow-100">
                     <h1>
                         OK.Shop
                     </h1>
                 </div>
-                <div class="address flex flex-col w-[40%] ">
+                <div class="address md:flex flex-col w-[40%] hidden">
                     <h2 class="font-bold text-xl">
                         Address
                     </h2>
@@ -74,13 +74,13 @@
                     </p>
                 </div>
             </div>
-            <div class="col-span-2 ">
+            <div class="col-span-2 md:text-left text-center">
                 <div class="font-bold text-xl  text-yellow-100">
                     <h1>
                         Payment
                     </h1>
                 </div>
-                <div class="address flex flex-col w-[40%] text-xs">
+                <div class="address flex flex-col w-full md:w-[40%] text-xs  text-center">
                    <p>
                     Start a 14 Day Free Trial on any of our paid plans. No credit card required.
                    </p>          

@@ -1,6 +1,6 @@
 <template>
 	<div class="md:h-[30vh] h-[10vh] bg-orange-400 ">
-		<p class="text-center pt-4">
+		<p class="text-center pt-4 md:hidden">
 			<a href="#product-under-20 ">
 
 				Back to Products

@@ -17,7 +17,10 @@
 
                     
                 </ul>
-                <font-awesome-icon class="sm:block hidden col-span-3 justify-self-end" icon="fa-brands fa-twitter" />
+                <div class="md:hidden col-span-3">
+
+                    <font-awesome-icon class=" " icon="fa-brands fa-twitter" />
+                </div>
                 
             </nav>
         </header>

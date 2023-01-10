@@ -1,5 +1,5 @@
 <template class="page">
-    <div class="grid grid-cols-4 gap-4 z-20 relative">
+    <div class="grid md:grid-cols-4 grid-cols-2 gap-4 z-20 relative ">
         <div  v-for="p in productStore.products.data">
             <ProductCards  :product="p"></ProductCards>
     </div>

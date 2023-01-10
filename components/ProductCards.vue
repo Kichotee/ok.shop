@@ -1,5 +1,5 @@
 <template>
-    <div class="card  text-center hover:scale-105 duration-500 w-[50vw] md:w-full z-0 h-[35vh] md:h-[40vh] " >
+    <div class="card  text-center hover:scale-105 duration-500 w-[45vw] relative z-20 md:w-full  h-[35vh] md:h-[40vh] " >
         <img :src="product.image" alt="product thumb" class="thumb">
         <p class="font-bold text-gray-500 m-4 truncate"></p>
         <NuxtLink :to="`/products/${product.id}`">
