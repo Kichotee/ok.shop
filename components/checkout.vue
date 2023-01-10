@@ -1,5 +1,5 @@
 <template>
-	<div class="h-80 w-1/2 z-30 px-4  text-orange-400 rounded-md bg-white relative overflow-x-hidden" @click="logcart">
+	<div class="h-80 w-1/2 z-30 px-4  text-orange-400 rounded-md bg-white relative overflow-x-hidden">
         <div class="h-max flex flex-col justify-between">
 
             <div class="h-full z-30">
@@ -18,6 +18,9 @@
                 <p class="text-stone-700 text-2xl  w-max"> <span class="font-bold">Total</span> -{{"  "+"$"+ getTotal() }}</p>
             </div>
         </div>
+        <button class="btn" @click="clearCart()">
+            clear cart
+                </button>
     
 	</div>
 </template>
@@ -31,6 +34,9 @@
 	});
     const getTotal = () => {
 		return store.totalPrice();
+	};
+    const clearCart = () => {
+		return store.clearCart();
 	};
 </script>
 

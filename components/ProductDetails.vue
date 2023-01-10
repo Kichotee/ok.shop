@@ -1,6 +1,6 @@
 <template>
 	<div class="card md:text-left text-center overflow-x-hidden" v-if="product !== null">
-		<div class="grid md:grid-cols-2 grid-rows-3 md:gap-10">
+		<div class="grid md:grid-cols-2  md:gap-10">
 			<div class=" h-[60%] md:h-max md:p-7 row-span-1">
 				<img 
 				id="productShow-img"
@@ -8,7 +8,7 @@
 					alt="Product-image"
 				/>
 			</div>
-			<div class="md:p-7 flex-col h-[60%] md:h-max row-span-2 ">
+			<div class="md:p-7 flex-col h-[60%] md:h-max ">
 				<div class="flex flex-col md:flex-row items-baseline">
 					<h2 class="text-4xl md:my-7 my-2 " :class="product.title.length>40?'text-[1rem] font-bold leading-8':'' ">
 						{{ product.title }}

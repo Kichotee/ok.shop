@@ -2,7 +2,7 @@
 	<div class="h-[40vh] md:h-[80vh] bg-orange-500">
 		<footer
 			id="footer h-full"
-			class="h-full"
+			class="h-full text-center md:text-left"
 		>
 
         <div class="md:grid grid-cols-5 h-[70%] container mx-auto hidden  ">
@@ -58,7 +58,7 @@
         </div>
         <div class="flex flex-col  w-full md:grid md:grid-cols-5 container mx-auto h-[30%] pt-8">
             <div class="md:col-span-3 flex flex-col md:w-full  md:flex-row gap-48 ">
-                <div class="font-bold text-2xl md:text-4xl text-yellow-100">
+                <div class="font-bold text-2xl md:text-4xl text-yellow-100 mb-2">
                     <h1>
                         OK.Shop
                     </h1>
@@ -74,18 +74,32 @@
                     </p>
                 </div>
             </div>
-            <div class="col-span-2 md:text-left text-center">
+            <div class="col-span-1 md:text-left text-center ">
                 <div class="font-bold text-xl  text-yellow-100">
                     <h1>
                         Payment
                     </h1>
                 </div>
-                <div class="address flex flex-col w-full md:w-[40%] text-xs  text-center">
-                   <p>
-                    Start a 14 Day Free Trial on any of our paid plans. No credit card required.
+                <div class="address  text-xs">
+                   <p class=" ">
+                    We have a 14 day return policy on each product Read more about our policies here
                    </p>          
                  </div>
             </div>
+            <div class="col-span-1 md:text-left text-right justify-self-end ">
+                <div class="font-bold text-xl  text-yellow-100">
+                    <h1>
+                        Customer care
+                    </h1>
+                </div>
+                <div class="address  text-xs">
+                   <p class=" ">
+                    Contact us  +2347059796413
+                   </p>          
+                 </div>
+            </div>
+        
+          
         </div>
     
     </footer>

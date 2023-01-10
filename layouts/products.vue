@@ -23,9 +23,7 @@
         <li>
             <NuxtLink to='/'> home</NuxtLink>
         </li>
-        <li>
-            <NuxtLink to='/about'> about</NuxtLink>
-        </li>
+        
         <li>
             <NuxtLink to='/products'> Products</NuxtLink>
         </li>
@@ -34,6 +32,7 @@
                 <i class="material-icons mr-2">
                     add_shopping_cart
                 </i>
+                
 
                 <sup class="text-xl rounded-full bg-green w-2 h-2">{{cartStore.totalProducts()}}</sup>
 
