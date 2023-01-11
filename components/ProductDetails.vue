@@ -15,7 +15,7 @@
 					</h2>
 					<vue3starRatings starColor="#Fb923C" v-model="product.rating.rate" starSize="16" :showControl="false" class="w-[80%] float-left"> </vue3starRatings>
 				</div>
-				<p class="text-xl my-7 text-center">
+				<p class="text-xl my-7 text-center md:text-left">
 					Price - ${{ product.price }}
 				</p>
 				<h3

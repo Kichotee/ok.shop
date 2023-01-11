@@ -87,7 +87,7 @@
                  </div>
             </div>
             <div class="col-span-1 md:text-left text-right justify-self-end ">
-                <div class="font-bold text-xl  text-yellow-100">
+                <div class="font-bold text-xl">
                     <h1>
                         Customer care
                     </h1>

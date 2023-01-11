@@ -62,7 +62,7 @@
 			
 				
 					<span
-						class="h-[90%] md:w-full"
+						class="h-[90%] md:w-full mt-4"
 						v-for="p in productStore.products.data
 							.filter(
 								(product) => product.price < 20
@@ -104,7 +104,7 @@
 					class="px-4 h-[55vh] overflow-x-scroll md:overflow-hidden md:grid-cols-5 md:grid md flex flex-c gap-4 md:w-full whitespace-nowrap"
 				>
 					<div
-						class="h-full "
+						class="h-full md:w-full mt-4"
 						v-for="p in productStore.products.data
 							.filter(
 								(product) =>
