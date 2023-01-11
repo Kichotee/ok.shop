@@ -86,13 +86,13 @@
                    </p>          
                  </div>
             </div>
-            <div class="col-span-1 md:text-left text-right justify-self-end ">
+            <div class="col-span-1 text-center md:text-right justify-self-end ">
                 <div class="font-bold text-xl">
                     <h1>
                         Customer care
                     </h1>
                 </div>
-                <div class="address  text-xs">
+                <div class="address  text-xs ">
                    <p class=" ">
                     Contact us  +2347059796413
                    </p>          
