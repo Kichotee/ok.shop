@@ -2,11 +2,7 @@
 	<div id="body-items"
 		class="md:pt-24 pt-32 z-10 relative overflow-x-hidden"
 	>
-		<Transition
-			name="showcase"
-			appear
-			v-if="show"
-		>
+		
 			<div
 				class="sticky left-0 w-screen h-[50vh] md:h-[70vh] md:w-[90%] bg-orange-400 overflow-hidden z-20 mx-auto md:relative rounded-lg scroll-smooth duration-500"
 			>
@@ -34,12 +30,12 @@
 					</div>
 				</div>
 			</div>
-		</Transition>
+	
 
 		<div
 			class="h-max container pt-24 z-20 relative mx-auto"
 			id="product-under-20"
-			v-if="show"
+			v-show="show"
 		>
 			<div
 				class="bg-black/50 py-2 px-1 rounded-t-xl"
@@ -84,6 +80,7 @@
 		</div>
 		<div
 			class="h-max container z-20 relative mx-auto"
+			
 		>
 			<div
 				class="bg-stone-500 py-2 px-1 rounded-t-xl"
@@ -96,7 +93,7 @@
 			</div>
 			<div>
 				<transition-group
-				v-if="show"
+				
 					tag="div"
 					appear
 					@before-enter="beforeEnter"

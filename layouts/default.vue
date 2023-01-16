@@ -1,7 +1,7 @@
 <template>
 	<div id="body-items" class="h-max">
 		<header
-			class="shadow-lg bg-white fixed z-20 w-full h-[8%] top-0 md:h-[10%]"
+			class="shadow-lg bg-white fixed z-20 w-full h-[8%] top-0 md:h-[10%] "
             
 		>
 			<nav
@@ -30,28 +30,33 @@
 					</li>
 				</ul>
 				<div
-					class="md:hidden pl-2"
-					@click="activeMenu = !activeMenu"
+					class="md:hidden justify-self-center"
+					@click="activeMenu = true"
 				>
 					<i class="material-icons-outlined">
-						menu
+						
+						<font-awesome-icon icon="fa-solid fa-bars " class="text-orange-400 " />
 					</i>
+
 				</div>
 
 			</nav>
 		</header>
 	</div>
     <div
-        class="absolute h-[30vh] left-0 top-1 bg-white justify-between w-screen z-50  md:hidden"
+        class="absolute h-[30vh] left-0 top-1 bg-white items-center justify-center flex w-screen z-50  md:hidden"
         v-if="activeMenu" @click.self="activeMenu= false"
     >
-        <ul class="flex flex-col h-[30vh] justify-around items-center gap-6">
-            <p absolute right-4top-8> </p>
+        <ul class="flex flex-col h-[80%] justify-center  items-center  gap-6 relative w-full">
+            <p class='w-2 absolute h-2 z-20 top-4 right-8 ' @click="activeMenu=false">
+				<font-awesome-icon icon="fa-close"/>	
+			</p>
+
             <li>
                 <NuxtLink to='/'> home</NuxtLink>
             </li>
             <li>
-                <NuxtLink to='/about'> about</NuxtLink>
+                <!-- <NuxtLink to='/about'> about</NuxtLink> -->
             </li> 
             <li>
                 <NuxtLink to='/products' class="btn"> Products</NuxtLink>
@@ -66,6 +71,7 @@
 </template>
 
 <script setup>
+// import FontAwesomeIcon from "@fortawesome/vue-fontawesome";
 	const activeMenu = ref(false);
 </script>
 
