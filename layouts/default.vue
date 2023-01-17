@@ -1,5 +1,5 @@
 <template>
-	<pageLoader v-if="isLoading"/>
+	<pageLoader v-if="isLoading == false"/>
 	<div class="h-max" v-else>
 
 		<div id="body-items" class="h-max">
@@ -81,12 +81,15 @@ const productStore = useProductStore()
 productStore.getProducts();
 
 	const activeMenu = ref(false);
-	const isLoading = ref(true);
+const isLoading = ref(true);
 
 	onMounted(()=>{
 		setTimeout(()=>{
 			isLoading.value=false
 		},12000)
+		computed(()=>{
+			console.log(productStore.products);
+		})
 	})
 </script>
 
