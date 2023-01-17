@@ -5,14 +5,14 @@ import {
 import { useProductStore } from "./store";
 
 const products =  useProductStore()
-
+const localCart= JSON.parse(localStorage.getItem('products-list'))
 export const useCartStore = defineStore(
 	"cartStore",
 	{
 		state: () => {
 			return {
 				// all these properties will have their type inferred automatically
-				cart: [],
+				cart: localCart?localCart:[],
 			};
 		},
 // add  product to cart or increase quantity of product
@@ -37,7 +37,7 @@ export const useCartStore = defineStore(
 			removeProductFromCart( product, quantity ) {
 				const cartItem=	{...product, quantity}
 				const productInCart= this.cart.find(item => item.id === product.id)
-				if (productInCart && productInCart.quantity > 0) {	
+				if (productInCart || productInCart.quantity > 1) {	
 					productInCart.quantity --
 				}
 				else {

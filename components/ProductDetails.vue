@@ -39,14 +39,14 @@
 					</button>
 					<button
 						@click="removeFromCart"
-						v-if="cartItems.cart.length !== 0"
+						v-if="totalProducts"
 						class="btn mt-7 ml-2"
 					>
 						remove fom cart
 					</button>
 					<button
 						@click="showCheckOut = true"
-						v-if="cartItems.cart.length !== 0"
+						v-if="totalProducts"
 						class="btn mt-7 ml-2"
 					>
 						Checkout
@@ -119,6 +119,11 @@
 			}
 		))
 	})
+	const totalProducts= computed(()=>{
+		return(cartItems.totalProducts())
+
+	}) 
+
 	
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-	<pageLoader v-if="isLoading == false"/>
+	<pageLoader v-if="productStore.products.data == null || isLoading"/>
 	<div class="h-max" v-else>
 
 		<div id="body-items" class="h-max">
@@ -78,19 +78,20 @@
 import { useProductStore } from '~~/stores/store';
 const productStore = useProductStore()
 
-productStore.getProducts();
 
-	const activeMenu = ref(false);
+const activeMenu = ref(false);
 const isLoading = ref(true);
 
-	onMounted(()=>{
+onMounted(()=>{
+		productStore.getProducts();
 		setTimeout(()=>{
 			isLoading.value=false
 		},12000)
-		computed(()=>{
-			console.log(productStore.products);
-		})
 	})
+	const dataCheck = computed(()=>{
+		return (console.log(productStore.getProducts()));
+	})
+	console.log(dataCheck);
 </script>
 
 <style lang="scss" scoped>

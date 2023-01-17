@@ -3,7 +3,7 @@
     <header class="shadow-sm bg-white">
         <nav class="container mx-auto flex justify-between p-4">
             <NuxtLink to='/products' class="font-bold"> Ok shop Products </NuxtLink>
-            <div class="cart">
+            <div class="cart" @click="showCheckOut=true">
                 <i class="material-icons mr-2">
                     add_shopping_cart
                 </i>
@@ -15,6 +15,20 @@
         </nav>
     </header>
 </div>
+<Teleport   to="body">
+			<transition appear name="modal">
+
+				<div
+					v-if="showCheckOut"
+					class="popup z-30"
+					@click.self="showCheckOut = false"
+				>
+				<Transition name="checkout-box" appear>
+					<Checkout/>
+				</Transition>
+				</div>
+			</transition>
+		</Teleport>
 <div class="container mx-auto p-4 mb-24">
     <slot></slot>
 </div>
@@ -28,8 +42,8 @@
             <NuxtLink to='/products'> Products</NuxtLink>
         </li>
     </ul>
-    <div class="cart float-right">
-                <i class="material-icons mr-2">
+    <div class="cart float-right" @click="showCheckOut=!showCheckOut">
+                <i class="material-icons mr-2" >
                     add_shopping_cart
                 </i>
                 
@@ -45,9 +59,43 @@ import { useCartStore } from "~~/stores/cart";
 
 const cartStore = useCartStore();
 
+const showCheckOut=ref(false)
+
 </script>
 
 <style lang="scss" scoped>
+.popup {
+		position: fixed;
+		top: 0%;
+		width: 100vw;
+		height: 100vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: rgba(0, 0, 0, 0.6);
+		backdrop-filter: blur(1rem);
+		font-family: poppins;
+		color: blue;
+		overflow: hidden;
+		position: fixed;
+	}
+    .modal-enter-from{
+		opacity: 0;
+    
+	}
+.checkout-box-enter-from, .checkout-box-leave-from{
+		translate: 0 100%;
+    
+	}
+	.modal-leave-to{
+        opacity: 0;	}
+	
+		.checkout-box-enter-active, .checkout-box-leave-active{
+			transition: all 1s ;
+		}
+	.modal-enter-active, .modal-leave-active{
+		transition: all 0.5s ease-in-out;
+    }
 li {
     list-style-type: none;
 }

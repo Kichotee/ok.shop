@@ -1,9 +1,8 @@
 <template>
     <TransitionGroup
     appear
-				@before-enter="sellersBeforeEnter"
-				@enter="sellersEnter"
-                @leave="sellersLeave"
+    name="loader"
+				
       tag="div" class="page">
 
         <div class="spinner" key="0"></div>
@@ -37,24 +36,12 @@ let texts = [
             const  sellersLeave = ref('')
 			
 onMounted(() => {
-				// get element
-
-               sellersBeforeEnter.value=(el)=>{
-                    gsap.fromTo(el,{
-                        opacity:0,
-                        duration:3
-                    },{
-                        opacity:1,
-                        
-                    })
-                }
-               sellersLeave.value=(el)=>{
-                    gsap.from(el,{
-                        opacity:0,
-                        y:'-100%',
-                        duration:3
-                    })
-                }
+				// // get element
+                // sellersBeforeEnter.value=(el)=>{
+                //     el.style.opacity=0
+                //     el.style.translate='-100% 0'
+                // }
+                
                 gsap.to('.caret',{
                     opacity:0,
                     repeat:-1
@@ -191,5 +178,12 @@ left: 50%;
  }
 }
 
+.loader-before-enter{
+    opacity: 0;
+}
+.loader{
+    opacity:1;
+    transition:all 1s;
+}
 
 </style>

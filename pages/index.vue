@@ -96,12 +96,12 @@
 				
 					tag="div"
 					appear
-					@before-enter="beforeEnter"
-					@enter="enter"
+					@before-enter="secondSlideBeforeEnter"
+					@enter="secondSlideEnter"
 					class="px-4 h-[55vh] overflow-x-scroll md:overflow-hidden md:grid-cols-5 md:grid md flex flex-c gap-4 md:w-full whitespace-nowrap"
 				>
 					<div
-						class="h-full md:w-full mt-4"
+						class="h-[90%] md:w-full mt-4"
 						v-for="p in productStore.products.data
 							.filter(
 								(product) =>
@@ -156,18 +156,17 @@
 				"Buy all the school stuff you need",
 		},
 	];
-	const beforeEnter = (el) => {
+	const secondSlideBeforeEnter = (el) => {
 		el.style.opacity = 0;
 		el.style.transform = "translateX(100%)";
 	};
-	const enter = (el) => {
+	const secondSlideEnter = (el) => {
 		gsap.to(el, {
 			scrollTrigger: {
 				target: el,
 				toggleActions: "play play play reverse ",
 				start: "40% 10%",
 				end: "30% center",
-				// markers: true,
 				
 			},
 			duration: 3,
