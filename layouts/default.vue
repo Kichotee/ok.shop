@@ -86,7 +86,7 @@ productStore.getProducts();
 	onMounted(()=>{
 		setTimeout(()=>{
 			isLoading.value=false
-		},8000)
+		},12000)
 	})
 </script>
 
