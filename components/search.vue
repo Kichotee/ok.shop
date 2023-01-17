@@ -1,5 +1,5 @@
 <template>
-	<div class="md:h-[100%] h-[90%] flex items-center justify-center relative  w-full">
+	<div class="md:h-[100%] h-[90%]  flex items-center justify-center relative  w-full">
 		<input
 			type="search"
 			name=""
@@ -10,15 +10,18 @@
 		/>
 		<div
 			id="search-result"
-			class="absolute h-[40vh] bg-white mt-2 z-10 w-[80%]  rounded overflow-x-hidden"
+			class="absolute h-[40vh]  bg-white top-[6vh] md:top-[8vh] w-[60vw]  md:w-[80%]  rounded overflow-x-hidden"
 			v-if="searchData != '' "
 		>
-			<p v-for="product in searchResult " class="mb-2 mx-auto w-max">
+			<p v-if="searchResult" v-for="product in searchResult " class="mb-2 mx-auto w-max">
                 <NuxtLink :to="`/products/${product.id}`">
                 
                     {{ product.title.substring(0,40) + '...' }}
                 </NuxtLink>
         </p>
+		<p v-if="searchResult== ''" class="mx-auto my-[50%] w-[50%] ">
+			Item not found
+		</p>
 		</div>
 	</div>
 </template>
