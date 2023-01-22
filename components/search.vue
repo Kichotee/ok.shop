@@ -19,7 +19,7 @@
                     {{ product.title.substring(0,40) + '...' }}
                 </NuxtLink>
         </p>
-		<p v-if="searchResult== ''" class="mx-auto my-[50%] w-[50%] ">
+		<p v-if="searchResult== ''" class="mx-auto my-[20%] w-[40%] ">
 			Item not found
 		</p>
 		</div>

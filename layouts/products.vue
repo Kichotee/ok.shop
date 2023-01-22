@@ -57,7 +57,12 @@
 <script setup>
 import { useCartStore } from "~~/stores/cart";
 
-const cartStore = useCartStore();
+let cartStore = computed(()=>{
+	return useCartStore()
+})
+
+
+
 
 const showCheckOut=ref(false)
 

@@ -3,16 +3,17 @@ import {
 	acceptHMRUpdate,
 } from "pinia";
 import { useProductStore } from "./store";
-
+import { useLocalStorage } from "@vueuse/core"
 const products =  useProductStore()
-const localCart= JSON.parse(localStorage.getItem('products-list'))
+
+
 export const useCartStore = defineStore(
 	"cartStore",
 	{
 		state: () => {
 			return {
 				// all these properties will have their type inferred automatically
-				cart: localCart?localCart:[],
+				cart: useLocalStorage('count', []),
 			};
 		},
 // add  product to cart or increase quantity of product
@@ -80,3 +81,11 @@ export const useCartStore = defineStore(
 		},
 	}
 );
+if (import.meta.hot) {
+	import.meta.hot.accept(
+		acceptHMRUpdate(
+			useProductStore,
+			import.meta.hot
+		)
+	);
+}
