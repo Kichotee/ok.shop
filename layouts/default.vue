@@ -91,7 +91,6 @@ onMounted(()=>{
 	const dataCheck = computed(()=>{
 		return (console.log(productStore.getProducts()));
 	})
-	console.log(dataCheck);
 </script>
 
 <style lang="scss" scoped>

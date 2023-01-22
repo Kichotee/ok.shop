@@ -78,6 +78,7 @@
 			
 			
 		</div>
+		
 		<div
 			class="h-max container z-20 relative mx-auto"
 			
@@ -106,6 +107,47 @@
 							.filter(
 								(product) =>
 									product.rating.rate < 3.5
+							)
+							.slice(0, 5)
+							.reverse()"
+						:key="p.title"
+					>
+						<ProductCards
+							:product="p"
+						></ProductCards>
+					</div>
+				</transition-group>
+			</div>
+		</div>
+
+		<div
+			class="h-max container z-20 relative mx-auto"
+			
+		>
+			<div
+				class="bg-stone-500 py-2 px-1 rounded-t-xl"
+			>
+				<h3
+					class="font-bold text-orange-400 text-center md:text-left"
+				>
+					Electronics
+				</h3>
+			</div>
+			<div>
+				<transition-group
+				
+					tag="div"
+					appear
+					@before-enter="secondSlideBeforeEnter"
+					@enter="secondSlideEnter"
+					class="px-4 h-[55vh] overflow-x-scroll md:overflow-hidden md:grid-cols-5 md:grid md flex flex-c gap-4 md:w-full whitespace-nowrap"
+				>
+					<div
+						class="h-[90%] md:w-full mt-4"
+						v-for="p in productStore.products.data
+							.filter(
+								(product) =>
+									product.category =='electronics'
 							)
 							.slice(0, 5)
 							.reverse()"
@@ -158,7 +200,7 @@
 	];
 	const secondSlideBeforeEnter = (el) => {
 		el.style.opacity = 0;
-		el.style.transform = "translateX(100%)";
+		el.style.transform = "translateX(-100%)";
 	};
 	const secondSlideEnter = (el) => {
 		gsap.to(el, {

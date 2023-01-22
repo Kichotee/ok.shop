@@ -3,8 +3,8 @@ import {
 	acceptHMRUpdate,
 } from "pinia";
 import { useProductStore } from "./store";
-import { useLocalStorage } from "@vueuse/core"
-const products =  useProductStore()
+
+
 
 
 export const useCartStore = defineStore(
@@ -13,7 +13,7 @@ export const useCartStore = defineStore(
 		state: () => {
 			return {
 				// all these properties will have their type inferred automatically
-				cart: useLocalStorage('count', []),
+				cart: useLocalStorage('cart', []),
 			};
 		},
 // add  product to cart or increase quantity of product
@@ -31,7 +31,7 @@ export const useCartStore = defineStore(
 				}
 				else {
                     this.cart.push(cartItem)}
-				this.updateLocalStorage()
+				
 			},
 // remove existing product from cart or reduce quantity of product
 
@@ -44,23 +44,15 @@ export const useCartStore = defineStore(
 				else {
                     this.cart.splice(this.cart.indexOf(cartItem), 1)
 				}
-				this.updateLocalStorage()
+				
 			},
 			// clear cart functionality
             clearCart(  ) {
 				
 				this.cart = []
 
-			this.updateLocalStorage();
+			
             },
-			updateLocalStorage() {
-				localStorage.setItem('products-list', JSON.stringify(this.cart));
-			  },
-		  
-			loadLocalStorage() {
-				if (localStorage.getItem('products-list'))
-				  this.cart = JSON.parse(localStorage.getItem('products-list'));
-			  },
 // calculate number of product in cart
 			  totalProducts(){
 				  let quantityCart = this.cart.map(function(j) {
@@ -79,6 +71,7 @@ export const useCartStore = defineStore(
 				 return (totalPrice)
 				}
 		},
+		persist: true,
 	}
 );
 if (import.meta.hot) {

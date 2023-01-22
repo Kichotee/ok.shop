@@ -3,6 +3,7 @@ export default defineNuxtConfig({
      modules:[
         '@nuxtjs/tailwindcss',
            '@pinia/nuxt',
+           '@pinia-plugin-persistedstate/nuxt',
        ],
        css: [
          '@fortawesome/fontawesome-svg-core/styles.css'
