@@ -13,7 +13,7 @@ export const useCartStore = defineStore(
 		state: () => {
 			return {
 				// all these properties will have their type inferred automatically
-				cart: useLocalStorage('cart', []),
+				cart:  [],
 			};
 		},
 // add  product to cart or increase quantity of product
