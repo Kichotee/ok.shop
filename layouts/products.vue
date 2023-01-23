@@ -108,6 +108,9 @@ li {
 a {
     text-decoration: none;
 }
+.cart{
+	cursor:pointer
+}
 
 .router-link-active {
     color: #FB923C;
