@@ -1,23 +1,48 @@
 <template>
-    <div class="card  text-center hover:scale-105 duration-500 w-[45vw] relative z-20 md:w-full  h-[35vh] md:h-[40vh] " >
-        <img :src="product.image" alt="product thumb" class="thumb">
-        <p class="font-bold text-gray-500 m-4 truncate"></p>
-        <NuxtLink :to="`/products/${product.id}`">
-            <button class="btn my-6 h-[20%]">
-                view Details
-            </button>
-            <p  class='text-md text-gray-400 text-xs'>
-                {{ product.title.substring(0, 25)+ `...` }}
+    <NuxtLink :to="`/products/${product.id}`">
+
+        <div class="card  text-left flex gap-2 flex-col hover:scale-105 duration-500 w-[50vw] relative z-20 md:w-full  h-[35vh] md:h-[40vh] " >
+            <img :src="product.image" alt="product thumb" class="w-full h-[50%] object-contain  aspect-square basis-1/2">
+            <div class="basis-1/2 h-[50%]">
+
+                <p  class='text-md mb-2 w-3/4  overflow-hidden text-black font-bold tracking-[0.025rem] text-xs'>
+                    {{ product.title.substring(0, 25)+ `...` }}
+                    
+                </p>
+                <p  class='text-md  w-3/4  overflow-hidden text-black font-bold tracking-[0.025rem] text-xs'>
+                <span class="text-[#686868] line-through"> ${{ Math.round(product.price +10)}} </span>   ${{ Math.round(product.price)}}
+                    
+                </p>
+
                 
-            </p>
-        </NuxtLink>
-        
-        <!-- <vue3starRatings starColor="#Fb923C" v-model="product.rating.rate" starSize="8" :showControl="false" class="w-[10%]" > </vue3starRatings> -->
-    </div>
+            </div>
+            <div class="flex w-full justify-between items-center">
+
+                <NuxtLink :to="`/products/${product.id}`">
+                    <button class="btn   text-primary h-[20%]">
+                        Buy now
+                    </button>
+                </NuxtLink>
+
+
+                    <font-awesome-icon class="text-primary" icon="fa-solids fa-heart " />
+
+
+                
+                    <font-awesome-icon class="text-primary" icon="fa-solids fa-cart-plus" />
+
+                
+            </div>
+            <!-- <vue3starRatings starColor="#Fb923C" v-model="product.rating.rate" starSize="8" :showControl="false" class="w-[10%]" > </vue3starRatings> -->
+        </div>
+    </NuxtLink>
 </template>
 
 <script setup>
 import vue3starRatings from "vue3-star-ratings";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+
 const { product } = defineProps(['product'])
 
 
@@ -25,7 +50,8 @@ const { product } = defineProps(['product'])
 
 <style lang="scss" scoped>
 .thumb {
-    min-height: 30%;
+    // min-height: 30%;
+    width: 50%;
     max-height: 30%;
     max-width: 70%;
     margin: 0 auto;

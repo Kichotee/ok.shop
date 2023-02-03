@@ -1,5 +1,5 @@
 <template>
-	<div class="h-[40vh] md:h-[80vh] bg-orange-500">
+	<div class="h-[40vh] md:h-[80vh] bg-primary">
 		<footer
 			id="footer h-full"
 			class="h-full text-center md:text-left"

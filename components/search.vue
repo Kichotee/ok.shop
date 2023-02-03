@@ -6,7 +6,7 @@
 			id=""
 			placeholder="Find what you need"
 			v-model="searchData"
-			class="border  w-[80%] placeholder:text-center"
+			class="border  w-[80%] placeholder:text-center focus:border-primary  focus:py-2 px-2 border-[#ddd]"
 		/>
 		<div
 			id="search-result"

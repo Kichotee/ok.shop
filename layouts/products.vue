@@ -32,7 +32,7 @@
 <div class="container mx-auto p-4 mb-24">
     <slot></slot>
 </div>
-<footer class=" fixed bottom-0 bg-gray-100 p-4 w-full flex border-t-2 justify-between z-40">
+<footer class=" fixed bottom-0 bg-neutral p-4 w-full flex drop-shadow-sm justify-between z-40">
     <ul class="flex gap-4">
         <li>
             <NuxtLink to='/'> home</NuxtLink>
@@ -80,7 +80,6 @@ const showCheckOut=ref(false)
 		background-color: rgba(0, 0, 0, 0.6);
 		backdrop-filter: blur(1rem);
 		font-family: poppins;
-		color: blue;
 		overflow: hidden;
 		position: fixed;
 	}

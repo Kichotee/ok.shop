@@ -1,5 +1,5 @@
 <template>
-	<div class="h-1/2 md:h-80 w-3/4 md:w-1/2  z-30 px-4  text-orange-400 rounded-md bg-white relative overflow-x-hidden">
+	<div class="h-1/2 md:h-80 w-3/4 md:w-1/2  z-30 px-4  text-primary rounded-md bg-neutral relative overflow-x-hidden">
         <div class="h-full flex flex-col  justify-evenly pb-2">
 
             <div class="h-3/ z-30 basis-3/4 ">

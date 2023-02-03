@@ -26,11 +26,11 @@
 				<p class="mb-2">
 					{{ product.description }}
 				</p>
-				<div class=" flex flex-col md:flex-row">
+				<div class=" flex flex-col md:flex-row  gap-6 w-full md:items-center">
 
 					<button
 						@click="pushToCart"
-						class="btn mt-7"
+						class="btn   text-primary h-[20%] "
 					>
 						<i class="material-icons mr-2">
 							add_shopping_cart
@@ -40,14 +40,14 @@
 					<button
 						@click="removeFromCart"
 						v-if="totalProducts"
-						class="btn mt-7 ml-2"
+						class="btn   text-primary h-[20%]  "
 					>
 						remove fom cart
 					</button>
 					<button
 						@click="showCheckOut = true"
 						v-if="totalProducts"
-						class="btn mt-7 ml-2"
+						class="btn   text-primary h-[20%]  "
 					>
 						Checkout
 					</button>

@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 body {
-	@apply bg-gray-50;
+	@apply bg-[#F5F5F5];
 }
 
 @layer components {
 	.btn {
-		@apply bg-[#FB923C] text-white px-3 py-2 rounded-md text-sm text-white;
+		@apply bg-[#fff] cursor-pointer shadow-md text-[#FB923C] w-max px-4 font-bold h-max py-2  text-xs text-center rounded-full  ;
 	}
     .card{
-        @apply p-3 rounded-md bg-white shadow-md h-[60%];
+        @apply px-3 py-2 rounded-md bg-[#fff] shadow-md h-[60%];
     }
 }

@@ -1,105 +1,91 @@
 <template>
-	<div id="body-items"
+	<div
+		id="body-items"
 		class="md:pt-24 pt-32 z-10 relative overflow-x-hidden"
 	>
-		
+		<div
+			class="left-0 w-screen h-[50vh] md:h-[70vh] bg-primary overflow-hidden z-20 mx-auto md:relative rounded-lg scroll-smooth "
+		>
 			<div
-				class="sticky left-0 w-screen h-[50vh] md:h-[70vh] md:w-[90%] bg-orange-400 overflow-hidden z-20 mx-auto md:relative rounded-lg scroll-smooth duration-500"
+				v-for="(item, index) in imageData"
+				v-show="index == currentData"
+				class="h-full w-full flex flex-col-reverse pt-4 md:flex-row-reverse justify-center items-center  md:translate-x-24 absolute z-10"
 			>
 				<div
-					v-for="(item, index) in imageData"
-					v-show="index == currentData"
-					class="h-full w-full flex flex-col-reverse pt-4 md:flex-row-reverse justify-center items-center overflow-hidden md:translate-x-24 absolute z-10"
+					class="basis-3/4 w-3/4 h-full  flex items-center rounded-full gradient from-[#fff] "
+					:class="
+						index == 1
+							? 'w-1/3 md:translate-0'
+							: ''
+					"
 				>
-					<img
-						:src="`${item.imageSrc}`"
-						alt=""
-						class="w-3/5 basis-3/4"
-						:class="
-							index == 1
-								? 'w-1/3 md:translate-0'
-								:''
-						"
-					/>
-					<div
-						class="w-full h-full grid grid-cols-1 place-items-center basis-1/4 px-2 text-center md:text-left"
-					>
-						<p class="text-5xl font-bold">
-							{{ item.imageText }}
-						</p>
-					</div>
+					<img :src="`${item.imageSrc}`" alt="" class=" h-[100%] w-[60vw]   ml-[30%] object-contain aspect-square" />
+				</div>
+				<div
+					class="w-full basis-1/4  text-center md:text-left"
+				>
+					<p class="text-5xl font-bold">
+						{{ item.imageText }}
+					</p>
 				</div>
 			</div>
-	
+		</div>
 
 		<div
 			class="h-max container pt-24 z-20 relative mx-auto"
 			id="product-under-20"
 			v-show="show"
 		>
-			<div
-				class="bg-black/50 py-2 px-1 rounded-t-xl"
-			>
+			<div>
 				<h3
-					class="font-bold text-orange-400 text-center md:text-left"
+					class="font-bold text-black text-center md:text-left"
 				>
 					Products under 20$
 				</h3>
 			</div>
 			<transition-group
 				v-if="show"
-					tag="div"
-					appear
-					@before-enter="firstSlideBeforeEnter"
-					@enter="firstSlideEnter"
-					
-					class="px-4 h-[55vh] overflow-x-scroll md:overflow-hidden md:grid-cols-5 md:grid md flex flex-c gap-4 md:w-full whitespace-nowrap"
+				tag="div"
+				appear
+				@before-enter="firstSlideBeforeEnter"
+				@enter="firstSlideEnter"
+				class=" h-[55vh] overflow-x-scroll md:overflow-hidden md:grid-cols-5 md:grid md flex  gap-4 md:w-full whitespace-nowrap"
+			>
+				<span
+					class="h-[90%] md:w-full mt-4"
+					v-for="p in productStore.products.data
+						.filter(
+							(product) => product.price < 20
+						)
+						.slice(0, -1)"
+					:key="p"
 				>
-			
-				
-					<span
-						class="h-[90%] md:w-full mt-4"
-						v-for="p in productStore.products.data
-							.filter(
-								(product) => product.price < 20
-							)
-							.slice(0, -1)"
-							:key="p"
-							
-					>
-						<ProductCards
-							:product="p"
-						></ProductCards>
-					</span>
-				
-			
-			
+					<ProductCards
+						:product="p"
+					></ProductCards>
+				</span>
 			</transition-group>
-			
-			
 		</div>
-		
+
 		<div
 			class="h-max container z-20 relative mx-auto"
-			
 		>
 			<div
-				class="bg-stone-500 py-2 px-1 rounded-t-xl"
+				class=""
 			>
 				<h3
-					class="font-bold text-orange-400 text-center md:text-left"
+					class="font-bold text-black text-center md:text-left"
 				>
 					Users' favorites
 				</h3>
 			</div>
 			<div>
 				<transition-group
-				
 					tag="div"
 					appear
 					@before-enter="secondSlideBeforeEnter"
 					@enter="secondSlideEnter"
-					class="px-4 h-[55vh] overflow-x-scroll md:overflow-hidden md:grid-cols-5 md:grid md flex flex-c gap-4 md:w-full whitespace-nowrap"
+					class=" h-[55vh] overflow-x-scroll md:overflow-hidden md:grid-cols-5 md:grid md flex flex-c gap-4 md:w-full whitespace-nowrap"
 				>
 					<div
 						class="h-[90%] md:w-full mt-4"
@@ -122,7 +108,6 @@
 
 		<div
 			class="h-max container z-20 relative mx-auto"
-			
 		>
 			<div
 				class="bg-stone-500 py-2 px-1 rounded-t-xl"
@@ -135,19 +120,19 @@
 			</div>
 			<div>
 				<transition-group
-				
 					tag="div"
 					appear
 					@before-enter="secondSlideBeforeEnter"
 					@enter="secondSlideEnter"
-					class="px-4 h-[55vh] overflow-x-scroll md:overflow-hidden md:grid-cols-5 md:grid md flex flex-c gap-4 md:w-full whitespace-nowrap"
+					class=" h-[55vh] overflow-x-scroll md:overflow-hidden md:grid-cols-5 md:grid md flex flex-c gap-4 md:w-full whitespace-nowrap"
 				>
 					<div
 						class="h-[90%] md:w-full mt-4"
 						v-for="p in productStore.products.data
 							.filter(
 								(product) =>
-									product.category =='electronics'
+									product.category ==
+									'electronics'
 							)
 							.slice(0, 5)
 							.reverse()"
@@ -160,6 +145,7 @@
 				</transition-group>
 			</div>
 		</div>
+		<Banner/>
 		<newsletter />
 		<FooterView />
 	</div>
@@ -209,14 +195,12 @@
 				toggleActions: "play play play reverse ",
 				start: "40% 10%",
 				end: "30% center",
-				
 			},
 			duration: 3,
 			x: 0,
 			opacity: 1,
 			ease: "elastic",
 			delay: el.dataset.index * 0.5,
-			
 		});
 	};
 	const firstSlideBeforeEnter = (el) => {
@@ -231,14 +215,12 @@
 				start: "10% 10%",
 				end: "30% center",
 				// markers: true,
-				
 			},
 			duration: 3,
 			x: 0,
 			opacity: 1,
 			ease: "elastic",
 			delay: el.dataset.index * 0.5,
-			
 		});
 	};
 
@@ -284,7 +266,12 @@
 		translate: 0 -100%;
 		filter: blur(1rem);
 	}
-	#body-items::-webkit-scrollbar{
-        width: 0;
-    }
+	#body-items::-webkit-scrollbar {
+		width: 0;
+	}
+	.gradient{
+
+background: radial-gradient(#fff, #FF7C02, #FF7C02);
+
+	}
 </style>
