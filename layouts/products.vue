@@ -1,6 +1,6 @@
 <template>
 <div>
-    <header class="shadow-sm bg-white">
+    <header class="shadow-sm bg-neutral">
         <nav class="container mx-auto flex justify-between p-4">
             <NuxtLink to='/products' class="font-bold"> Ok shop Products </NuxtLink>
             <div class="cart" @click="showCheckOut=true">

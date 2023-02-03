@@ -1,151 +1,70 @@
 <template>
 	<div
 		id="body-items"
-		class="md:pt-24 pt-32 z-10 relative overflow-x-hidden"
+		class="pt-12 z-10 relative overflow-x-hidden"
 	>
 		<div
-			class="left-0 w-screen h-[50vh] md:h-[70vh] bg-primary overflow-hidden z-20 mx-auto md:relative rounded-lg scroll-smooth "
+			class="left-0 w-screen h-[40vh] md:h-[70vh] bg-primary overflow-hidden z-20 mx-auto md:relative rounded-lg scroll-smooth"
 		>
 			<div
 				v-for="(item, index) in imageData"
 				v-show="index == currentData"
-				class="h-full w-full flex flex-col-reverse pt-4 md:flex-row-reverse justify-center items-center  md:translate-x-24 absolute z-10"
+				class="h-full w-full flex flex-col-reverse pt-4 md:flex-row-reverse  items-center pl-12 absolute z-10"
 			>
 				<div
-					class="basis-3/4 w-3/4 h-full  flex items-center rounded-full gradient from-[#fff] "
+					class="basis-3/5 w-full h-full justify-self-end rounded-full gradient "
 					:class="
-						index == 1
-							? 'w-1/3 md:translate-0'
+						index == 3
+							? 'basis-4/5 md:translate-0'
 							: ''
 					"
 				>
-					<img :src="`${item.imageSrc}`" alt="" class=" h-[100%] w-[60vw]   ml-[30%] object-contain aspect-square" />
+					<img
+						:src="`${item.imageSrc}`"
+						alt=""
+						class="h-[100%] backdrop-blur-sm w-full object-contain aspect-square"
+					/>
 				</div>
 				<div
-					class="w-full basis-1/4  text-center md:text-left"
+					class=" basis-2/5 w-[20vw] text-center md:text-left"
 				>
-					<p class="text-5xl font-bold">
-						{{ item.imageText }}
+					<p class="text-5xl font-bold leading-[62px] ">
+						{{ item.imageText1 }}
+						<span  class="text-neutral"> {{ item.imageText2 }} </span> <br>
+						<span>{{ item.imageText3 }} </span> <br>
+						<span class="text-neutral">{{ item.imageText4 }} </span>
 					</p>
+					<div class="btn mt-6 py-2 rounded-lg text-lg px-6">Shop now</div>
 				</div>
 			</div>
 		</div>
 
-		<div
-			class="h-max container pt-24 z-20 relative mx-auto"
-			id="product-under-20"
-			v-show="show"
-		>
-			<div>
-				<h3
-					class="font-bold text-black text-center md:text-left"
-				>
-					Products under 20$
-				</h3>
-			</div>
-			<transition-group
-				v-if="show"
-				tag="div"
-				appear
-				@before-enter="firstSlideBeforeEnter"
-				@enter="firstSlideEnter"
-				class=" h-[55vh] overflow-x-scroll md:overflow-hidden md:grid-cols-5 md:grid md flex  gap-4 md:w-full whitespace-nowrap"
-			>
-				<span
-					class="h-[90%] md:w-full mt-4"
-					v-for="p in productStore.products.data
-						.filter(
-							(product) => product.price < 20
-						)
-						.slice(0, -1)"
-					:key="p"
-				>
-					<ProductCards
-						:product="p"
-					></ProductCards>
-				</span>
-			</transition-group>
-		</div>
+		
 
-		<div
-			class="h-max container z-20 relative mx-auto"
-		>
-			<div
-				class=""
-			>
-				<h3
-					class="font-bold text-black text-center md:text-left"
-				>
-					Users' favorites
-				</h3>
-			</div>
-			<div>
-				<transition-group
-					tag="div"
-					appear
-					@before-enter="secondSlideBeforeEnter"
-					@enter="secondSlideEnter"
-					class=" h-[55vh] overflow-x-scroll md:overflow-hidden md:grid-cols-5 md:grid md flex flex-c gap-4 md:w-full whitespace-nowrap"
-				>
-					<div
-						class="h-[90%] md:w-full mt-4"
-						v-for="p in productStore.products.data
-							.filter(
-								(product) =>
-									product.rating.rate < 3.5
-							)
-							.slice(0, 5)
-							.reverse()"
-						:key="p.title"
-					>
-						<ProductCards
-							:product="p"
-						></ProductCards>
-					</div>
-				</transition-group>
-			</div>
-		</div>
+		<ShowProducts
+		class="pt-12"
+			:show="show"
+			section="Products under $20"
+			:products="cheapProducts"
+		/>
+		<ShowProducts
+			:show="show"
+			section="User's favorite"
+			:products="favorite"
+		/>
+		<ShowProducts
+			:show="show"
+			section="Electronics"
+			:products="electronics"
+		/>
+		
+		<Banner />
+		<ShowProducts
+			:show="show"
+			section="Electronics"
+			:products="electronics"
+		/>
 
-		<div
-			class="h-max container z-20 relative mx-auto"
-		>
-			<div
-				class="bg-stone-500 py-2 px-1 rounded-t-xl"
-			>
-				<h3
-					class="font-bold text-orange-400 text-center md:text-left"
-				>
-					Electronics
-				</h3>
-			</div>
-			<div>
-				<transition-group
-					tag="div"
-					appear
-					@before-enter="secondSlideBeforeEnter"
-					@enter="secondSlideEnter"
-					class=" h-[55vh] overflow-x-scroll md:overflow-hidden md:grid-cols-5 md:grid md flex flex-c gap-4 md:w-full whitespace-nowrap"
-				>
-					<div
-						class="h-[90%] md:w-full mt-4"
-						v-for="p in productStore.products.data
-							.filter(
-								(product) =>
-									product.category ==
-									'electronics'
-							)
-							.slice(0, 5)
-							.reverse()"
-						:key="p.title"
-					>
-						<ProductCards
-							:product="p"
-						></ProductCards>
-					</div>
-				</transition-group>
-			</div>
-		</div>
-		<Banner/>
 		<newsletter />
 		<FooterView />
 	</div>
@@ -156,13 +75,9 @@
 	import image1 from "~/assets/img/image1.png";
 	import image2 from "~/assets/img/image2.png";
 	import image3 from "~/assets/img/image3.png";
-	import { gsap } from "gsap";
-	import scrollTrigger from "gsap/ScrollTrigger";
-
 	const productStore = useProductStore();
 
-	productStore.getProducts();
-	gsap.registerPlugin(scrollTrigger);
+	productStore.getProducts()
 	const show = ref(false);
 	onMounted(() => {
 		show.value = true;
@@ -171,66 +86,31 @@
 	const imageData = [
 		{
 			imageSrc: image2,
-			imageText:
-				"Get affordable house hold materials",
+			imageText1:"Get ",
+			imageText2:"Affordable ",
+			imageText3:"HouseHold ",
+			imageText4:"Materials ",
 		},
 		{
 			imageSrc: image1,
-			imageText: "Shop for your Gadgets online",
+			imageText1: "Shop ",
+		
+			imageText2:"for your  ",
+			imageText3:"Gadgets  ",
+			imageText4:"online ",
 		},
 		{
 			imageSrc: image3,
-			imageText:
-				"Buy all the school stuff you need",
+			imageText1:
+				"Buy all the",		
+			imageText2:"school ",
+			imageText3:"Stuff  ",
+			imageText4:"you need ",
 		},
 	];
-	const secondSlideBeforeEnter = (el) => {
-		el.style.opacity = 0;
-		el.style.transform = "translateX(-100%)";
-	};
-	const secondSlideEnter = (el) => {
-		gsap.to(el, {
-			scrollTrigger: {
-				target: el,
-				toggleActions: "play play play reverse ",
-				start: "40% 10%",
-				end: "30% center",
-			},
-			duration: 3,
-			x: 0,
-			opacity: 1,
-			ease: "elastic",
-			delay: el.dataset.index * 0.5,
-		});
-	};
-	const firstSlideBeforeEnter = (el) => {
-		el.style.opacity = 0;
-		el.style.transform = "translateX(-100%)";
-	};
-	const firstSlideEnter = (el) => {
-		gsap.to(el, {
-			scrollTrigger: {
-				target: el,
-				toggleActions: "play play play reverse ",
-				start: "10% 10%",
-				end: "30% center",
-				// markers: true,
-			},
-			duration: 3,
-			x: 0,
-			opacity: 1,
-			ease: "elastic",
-			delay: el.dataset.index * 0.5,
-		});
-	};
+	
 
 	const currentData = ref(0);
-	const Next = () => {
-		currentData.value++;
-		if (currentData.value >= 20) {
-			currentData.value = 0;
-		}
-	};
 
 	const Prev = () => {
 		if (currentData.value <= 0) {
@@ -242,6 +122,29 @@
 	setInterval(() => {
 		Prev();
 	}, 5000);
+	const cheapProducts = computed(() => {
+		return productStore.products.data
+			.filter((product) => product.price < 20)
+			.slice(0, -1);
+	});
+
+	const electronics = computed(() => {
+		return productStore.products.data
+			.filter(
+				(product) =>
+					product.category == "electronics"
+			)
+			.slice(0, 5)
+			.reverse();
+	});
+	const favorite = computed(() => {
+		return productStore.products.data
+			.filter(
+				(product) => product.rating.rate < 3.5
+			)
+			.slice(0, 5)
+			.reverse();
+	});
 </script>
 
 <style scoped>
@@ -269,9 +172,9 @@
 	#body-items::-webkit-scrollbar {
 		width: 0;
 	}
-	.gradient{
-
-background: radial-gradient(#fff, #FF7C02, #FF7C02);
-
+	.gradient {
+		background: radial-gradient( #fff 0%, #f9b97c 30%,  #FF7C02 60%);
+		/* backdrop-filter: blur(50px); */
+		
 	}
 </style>

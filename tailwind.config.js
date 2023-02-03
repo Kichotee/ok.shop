@@ -10,13 +10,12 @@ module.exports = {
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-      },
+      }
     },
     colors: {
-      'primary': "# ",
-      'neutral':'#fffff',
+      'primary': "#FF7C02",
       // 'black':'#00000',
-      'neutral':'#F5f5f5'
+      'neutral':'#ffffff'
     }
   },
   plugins: [],

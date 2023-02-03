@@ -10,7 +10,7 @@
 		/>
 		<div
 			id="search-result"
-			class="absolute h-[40vh]  bg-white top-[6vh] md:top-[8vh] w-[60vw]  md:w-[80%]  rounded overflow-x-hidden"
+			class="absolute h-[40vh]  bg-[#fff] top-[6vh] md:top-[8vh] w-[60vw]  md:w-[80%]  rounded overflow-x-hidden"
 			v-if="searchData != '' "
 		>
 			<p v-if="searchResult" v-for="product in searchResult " class="mb-2 mx-auto w-max">
