@@ -1,11 +1,11 @@
 <template>
-	<pageLoader
+	<!-- <pageLoader
 		v-if="
 			productStore.products.data == null ||
 			isLoading
 		"
-	/>
-	<div class="h-max" v-else>
+	/> -->
+	<div class="h-max" >
 		<div id="body-items" class="h-max">
 			<header
 				class=" bg-[#fff] fixed z-20 w-full h-[8%] top-0 md:h-[12%]"
@@ -20,7 +20,8 @@
 						Ok shop
 					</NuxtLink>
 					<ul
-						class="justify-evenly col-span-3 w-full font-bold hidden md:flex"
+						
+						class="justify-evenly relative col-span-3 w-full font-bold hidden md:flex"
 					>
 						<li>
 							<NuxtLink to="/"> Home</NuxtLink>
@@ -35,16 +36,18 @@
 								</NuxtLink>
 						</li>
 
-						<li>
-							<NuxtLink
+						
+							<li
+								@click="toggleDropdown"
 								to="/products"
-								class=""
+								class="cursor-pointer"
 							>
+								<DropList v-if="dropdown==true" :products="productStore.products.data"></DropList>
 								Products
-					<font-awesome-icon icon="fa-solids fa-caret-down" />
+								<font-awesome-icon icon="fa-solids fa-caret-down" />
 								<span></span>
-								</NuxtLink>
-						</li>
+								</li>
+					
 						<li>
 							<NuxtLink
 								to="/products"
@@ -120,6 +123,7 @@
 	import { useProductStore } from "~~/stores/store";
 	const productStore = useProductStore();
 
+
 	const activeMenu = ref(false);
 	const isLoading = ref(true);
 
@@ -129,11 +133,12 @@
 			isLoading.value = false;
 		}, 12000);
 	});
-	const dataCheck = computed(() => {
-		return console.log(
-			productStore.getProducts()
-		);
-	});
+	
+	const dropdown = ref(false)
+	const toggleDropdown = ()=>{
+		dropdown.value=!dropdown.value
+	}
+
 </script>
 
 <style lang="scss" scoped>

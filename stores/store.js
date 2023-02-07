@@ -15,9 +15,11 @@ export const useProductStore = defineStore(
 
 		actions: {
 			async getProducts() {
-				this.products = await useFetch(
-					"https://fakestoreapi.com/products/?limit=30"
+				this.products = await useFetch( 
+					"https://fakestoreapi.com/products/"
 				);
+				
+
 			},
 			cheaperProducts() {
 				if (this.products.length!==0) {
