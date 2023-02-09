@@ -6,7 +6,7 @@
             <div class="basis-1/2 h-[50%]">
 
                 <p  class='text-md mb-2 w-3/4  overflow-hidden text-black font-bold tracking-[0.025rem] text-xs'>
-                    {{ product.title.substring(0, 25)+ `...` }}
+                    {{ product.title.substring(0, 20)+ `...` }}
                     
                 </p>
                 <p  class='text-md  w-3/4  overflow-hidden text-black font-bold tracking-[0.025rem] text-xs'>

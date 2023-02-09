@@ -117,6 +117,7 @@
 			></slot>
 		</div>
 	</div>
+	<div class="h-screen" v-if="productStore.products.error"></div>
 </template>
 
 <script setup>

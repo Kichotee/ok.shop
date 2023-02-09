@@ -4,9 +4,8 @@
         <nav class="container mx-auto flex justify-between p-4">
             <NuxtLink to='/products' class="font-bold"> Ok shop Products </NuxtLink>
             <div class="cart" @click="showCheckOut=true">
-                <i class="material-icons mr-2">
-                    add_shopping_cart
-                </i>
+				<font-awesome-icon class="text-[#000] mr-2 text-lg" icon="fa-solids fa-cart-plus " />
+
 
                 <sup class="text-xl rounded-full bg-green w-2 h-2">{{cartStore.totalProducts()}}</sup>
 
@@ -43,12 +42,11 @@
         </li>
     </ul>
     <div class="cart float-right" @click="showCheckOut=!showCheckOut">
-                <i class="material-icons mr-2" >
-                    add_shopping_cart
-                </i>
+		<font-awesome-icon class="text-[#000] mr-2 text-lg" :class="cartStore.totalPrice==0?'text-[#000]':'text-primary'" icon="fa-solids fa-cart-plus " />
+
                 
 
-                <sup class="text-xl rounded-full bg-green w-2 h-2">{{cartStore.totalProducts()}}</sup>
+                <sup class="text-xl  rounded-full " :class="cartStore.totalPrice==0?'text-[#000]':'text-primary'">{{cartStore.totalProducts()}}</sup>
 
             </div>
 </footer>
@@ -59,6 +57,8 @@ import { useCartStore } from "~~/stores/cart";
 
 let cartStore = computed(()=>{
 	return useCartStore()
+
+	console.log(useCartStore());
 })
 
 
