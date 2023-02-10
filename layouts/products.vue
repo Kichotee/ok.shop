@@ -42,11 +42,11 @@
         </li>
     </ul>
     <div class="cart float-right" @click="showCheckOut=!showCheckOut">
-		<font-awesome-icon class="text-[#000] mr-2 text-lg" :class="cartStore.totalPrice==0?'text-[#000]':'text-primary'" icon="fa-solids fa-cart-plus " />
+		<font-awesome-icon class="text-[#000] mr-2 text-lg" :class="cartStore.totalProducts==0?'text-[#000]':'text-primary'" icon="fa-solids fa-cart-plus " />
 
                 
 
-                <sup class="text-xl  rounded-full " :class="cartStore.totalPrice==0?'text-[#000]':'text-primary'">{{cartStore.totalProducts()}}</sup>
+                <sup class="text-xl  rounded-full " :class="cartStore.totalProducts<=0?'text-[#000]':'text-primary'">{{cartStore.totalProducts()}}</sup>
 
             </div>
 </footer>
@@ -54,11 +54,10 @@
 
 <script setup>
 import { useCartStore } from "~~/stores/cart";
+import { useFavouriteStore } from "~~/stores/favourites";
 
 let cartStore = computed(()=>{
 	return useCartStore()
-
-	console.log(useCartStore());
 })
 
 

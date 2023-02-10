@@ -71,7 +71,7 @@ export const useCartStore = defineStore(
 				 return (totalPrice)
 				}
 		},
-		persist: true,
+		persist: 	true,
 	}
 );
 if (import.meta.hot) {

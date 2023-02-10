@@ -10,7 +10,12 @@
 			>
 				{{ section }}
 			</h3>
-			<h4 class="underline">View all products</h4>
+			<h4 class="underline">
+				<NuxtLink to="/products">
+
+					View all products
+				</NuxtLink>
+			</h4>
 		</div>
 		<transition-group
 			v-if="show"

@@ -61,11 +61,17 @@
 						<Search
 							class="h-full md:flex pt-2 md:pt-0"
 						></Search>
-                    <font-awesome-icon class="text-primary" icon="fa-solids fa-heart " />
+						
+						<font-awesome-icon class="text-primary" icon="fa-solids fa-cart-plus" />
+						<div class="w-6 h-6  ">
+							<sup class="text-xl  z-50   rounded-full " >{{favourites.totalLikedProducts()}}</sup>
+							<font-awesome-icon class="text-primary" icon="fa-solids fa-heart " >
 
-                
-                    <font-awesome-icon class="text-primary" icon="fa-solids fa-cart-plus" />
 
+					</font-awesome-icon>
+
+				</div>
+						
                 
 					</div>
 					<div
@@ -122,11 +128,16 @@
 
 <script setup>
 	import { useProductStore } from "~~/stores/store";
+	import {useFavouriteStore} from  "~~/stores/favourites";	
 	const productStore = useProductStore();
 
 
 	const activeMenu = ref(false);
 	const isLoading = ref(true);
+	let favourites=computed(()=>{
+	return useFavouriteStore()
+})
+
 
 	onMounted(() => {
 		productStore.getProducts();
