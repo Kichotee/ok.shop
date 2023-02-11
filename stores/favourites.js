@@ -31,9 +31,7 @@ export const useFavouriteStore = defineStore('favouriteStore', {
             let quantityLiked = this.favourites.map((i) => {
                 return i.quantity
             })
-            return quantityLiked.reduce((a, b) => {
-                a + b, 0
-            })
+            return quantityLiked
         }
     },
     persist: true,
