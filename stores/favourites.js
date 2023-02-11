@@ -2,6 +2,7 @@ import {
     defineStore,
     acceptHMRUpdate,
 } from "pinia";
+import { useProductStore } from "./store";
 
 export const useFavouriteStore = defineStore('favouriteStore', {
     state: () => {
@@ -31,7 +32,7 @@ export const useFavouriteStore = defineStore('favouriteStore', {
             let quantityLiked = this.favourites.map((i) => {
                 return i.quantity
             })
-            return quantityLiked
+            return quantityLiked.reduce((a,b)=>a+b,0)
         }
     },
     persist: true,

@@ -18,8 +18,6 @@ export const useProductStore = defineStore(
 				this.products = await useFetch( 
 					"https://fakestoreapi.com/products/"
 				);
-				
-
 			},
 			cheaperProducts() {
 				if (this.products.length!==0) {

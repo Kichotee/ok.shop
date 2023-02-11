@@ -1,13 +1,15 @@
 <template>
-	<NuxtLink :to="`/products/${product.id}`">
+	
 		<div
 			class="card text-left flex gap-2 flex-col hover:scale-105 duration-500 w-[50vw] relative z-20 md:w-full h-[35vh] md:h-[40vh]"
-		>
+		><NuxtLink class="w-full h-[50%]" :to="`/products/${product.id}`">
+		
 			<img
 				:src="product.image"
 				alt="product thumb"
-				class="w-full h-[50%] object-contain aspect-square basis-1/2"
+				class="h-full w-full object-contain aspect-square basis-1/2"
 			/>
+		</NuxtLink>
 			<div class="basis-1/2 h-[50%]">
 				<p
 					class="text-md mb-2 w-3/4 overflow-hidden text-black font-bold tracking-[0.025rem] text-xs"
@@ -39,9 +41,10 @@
 				</NuxtLink>
 
 				<font-awesome-icon
-					class="text-primary hover:text-[#000]"
+					class="text-primary/70 hover:text-primary"
+					:class="liked==true?'text-primary':''"
 					icon="fa-solids fa-heart "
-					@click="likeProduct()"
+					@click="likeProduct() && toggleClick() "
 				/>
 
 				<font-awesome-icon
@@ -51,26 +54,33 @@
 			</div>
 			<!-- <vue3starRatings starColor="#Fb923C" v-model="product.rating.rate" starSize="8" :showControl="false" class="w-[10%]" > </vue3starRatings> -->
 		</div>
-	</NuxtLink>
+	
 </template>
 
 <script setup>
 	import vue3starRatings from "vue3-star-ratings";
-	import { faHeart } from "@fortawesome/free-solid-svg-icons";
+	import { faHeart, faLeftLong } from "@fortawesome/free-solid-svg-icons";
 	import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 	import { useFavouriteStore } from "~~/stores/favourites";
 
 	const { product } = defineProps(["product"]);
 	const favourites = useFavouriteStore();
 
-	const likeProduct = () => {
+	let liked= ref(false)
+	const likeProduct = computed(() => {
 		const quantity = ref(1);
 
-		favourites.likedProducts(
+		return favourites.likedProducts(
 			product,
 			quantity.value
 		);
-	};
+
+		
+	});
+	const toggleClick=()=>{
+		liked.value=true
+	}
+
 </script>
 
 <style lang="scss" scoped>

@@ -62,13 +62,16 @@
 							class="h-full md:flex pt-2 md:pt-0"
 						></Search>
 						
-						<font-awesome-icon class="text-primary" icon="fa-solids fa-cart-plus" />
-						<div class="w-6 h-6  ">
-							<sup class="text-xl  z-50   rounded-full " >{{favourites.totalLikedProducts()}}</sup>
-							<font-awesome-icon class="text-primary" icon="fa-solids fa-heart " >
+						<div class="w-16  h-full flex  items-center ">
+							<font-awesome-icon class="text-primary " icon="fa-solids fa-cart-plus" />
+							<font-awesome-icon class="text-primary ml-4" icon="fa-solids fa-heart " >
+							
+							</font-awesome-icon>
+							<sup class="text-sm ml-1  z-50  " >{{favourites.totalLikedProducts()}}</sup>
+	
+							
 
 
-					</font-awesome-icon>
 
 				</div>
 						
