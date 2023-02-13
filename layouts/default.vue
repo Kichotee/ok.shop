@@ -1,10 +1,10 @@
 <template>
-	<!-- <pageLoader
+	<pageLoader
 		v-if="
 			productStore.products.data == null ||
 			isLoading
 		"
-	/> -->
+	/>
 	<div class="h-max" >
 		<div id="body-items" class="h-max">
 			<header
@@ -15,13 +15,13 @@
 				>
 					<NuxtLink
 						to="/"
-						class="font-bold basis-[20%]"
+						class="font-bold basis-[20%]  md:col-span-1 col-span-2"
 					>
 						Ok shop
 					</NuxtLink>
 					<ul
 						
-						class="justify-evenly relative col-span-3 w-full font-bold hidden md:flex"
+						class="justify-evenly relative  md:col-span-3 w-full font-bold hidden md:flex"
 					>
 						<li>
 							<NuxtLink to="/"> Home</NuxtLink>
@@ -57,12 +57,12 @@
 								</NuxtLink>
 						</li>
 					</ul>
-					<div class="col-span-3 flex gap-4" >
+					<div class="col-span-4   w-full  md:col-span-3 md:justify-end flex gap-4" >
 						<Search
-							class="h-full md:flex pt-2 md:pt-0"
+							class="h-full  md:flex pt-2 md:pt-0"
 						></Search>
 						
-						<div class="w-16  h-full flex  items-center ">
+						<div class="w-16 hidden md:flex h-full   items-center ">
 							<font-awesome-icon class="text-primary " icon="fa-solids fa-cart-plus" />
 							<font-awesome-icon class="text-primary ml-4" icon="fa-solids fa-heart " >
 							
@@ -78,13 +78,13 @@
                 
 					</div>
 					<div
-						class="md:hidden justify-self-center"
+						class="md:hidden justify-self-end mr-2 col-span-1 "
 						@click="activeMenu = true"
 					>
 						<i class="material-icons-outlined">
 							<font-awesome-icon
 								icon="fa-solid fa-bars "
-								class="text-orange-400"
+								class="text-primary text-3xl"
 							/>
 						</i>
 					</div>
@@ -92,7 +92,7 @@
 			</header>
 		</div>
 		<div
-			class="absolute h-[30vh] left-0 top-1 bg-white items-center justify-center flex w-screen z-50 md:hidden"
+			class="absolute h-[30vh] left-0 top-1 bg-neutral items-center justify-center flex w-screen z-50 md:hidden"
 			v-if="activeMenu"
 			@click.self="activeMenu = false"
 		>

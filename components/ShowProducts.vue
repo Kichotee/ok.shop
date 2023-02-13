@@ -1,16 +1,16 @@
 <template>
 	<div
-		class="h-max container  z-30 relative mx-auto "
+		class="md:h-max container h-[50vh]  z-30 relative mx-[10px] md:mx-auto "
 		
 		
 	>
-		<div class="flex w-full justify-between">
+		<div class="flex w-full pr-[20px] md:pr-0 justify-between">
 			<h3
 				class="font-bold text-black text-center md:text-left"
 			>
 				{{ section }}
 			</h3>
-			<h4 class="underline">
+			<h4 class="underline ">
 				<NuxtLink to="/products">
 
 					View all products
@@ -25,13 +25,13 @@
 			@enter="firstSlideEnter"
 			class="h-[55vh] overflow-x-scroll md:overflow-hidden md:grid-cols-5 md:grid md flex gap-4 md:w-full relative  whitespace-nowrap"
 		>
-			<span
-				class="h-[90%] md:w-full mt-4"
+			<div
+				class="h-[90%] md:h-[90%] md:w-full mt-4"
 				v-for="p in products"
 				:key="p"
 			>
-				<ProductCards :product="p"></ProductCards>
-			</span>
+				<ProductCards :product="p" showProduct="showProduct"></ProductCards>
+			</div>
 
 		</transition-group>
         <span class="h-8 w-8 flex items-center justify-center text-neutral  bg-primary absolute top-1/2 -right-10 z-50 rounded-full   ">

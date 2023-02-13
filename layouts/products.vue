@@ -28,7 +28,7 @@
 				</div>
 			</transition>
 		</Teleport>
-<div class="container mx-auto p-4 mb-24">
+<div class="container md:mx-auto py-4 mb-16">
     <slot></slot>
 </div>
 <footer class=" fixed bottom-0 bg-neutral p-4 w-full flex drop-shadow-sm justify-between z-40">

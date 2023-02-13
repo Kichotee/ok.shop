@@ -9,34 +9,34 @@
 			<div
 				v-for="(item, index) in imageData"
 				v-show="index == currentData"
-				class="h-full w-full flex flex-col-reverse   pt-6 md:flex-row-reverse  items-center pl-12 absolute z-10"
+				class="h-full w-full flex flex-col-reverse   my-2 md:flex-row-reverse  items-center md:pl-12 absolute z-10"
 			>
 				<div
-					class="basis-3/5 w-full  md:h-full justify-self-end rounded-full gradient "
+					class="basis-3/5 w-full mx-auto relative md:h-full justify-self-end rounded-full gradient "
 					:class="
 						index == 3
-							? 'basis-4/5 md:translate-0'
+							? 'md:basis-4/5 md:translate-0'
 							: ''
 					"
 				>
 					<img
 						:src="`${item.imageSrc}`"
 						alt=""
-						class="h-[100%] backdrop-blur-sm w-[60%] mx-auto md:w-full object-contain aspect-square"
+						class="h-[60%] backdrop-blur-sm w-[60%] mx-auto md:w-full md:h-[100%] object-contain aspect-square"
 					/>
-					<div class="btn  block md:hidden mt-6 py-2 rounded-lg text-lg px-6">Shop now</div>
+					<div class="btn absolute left-[50%] w-max translate-x-[-50%]  block md:hidden mt-6  rounded-lg text-lg px-6">Shop now</div>
 
 				</div>
 				<div
-					class=" basis-2/5 w-[60%] md:block flex flex-col items-center mx-auto md:w-[20vw] text-center  md:text-left"
+					class=" basis-2/5 w-[60%] md:block mt-12 flex flex-col items-center mx-auto md:w-[20vw] text-center  md:text-left"
 				>
-					<p class="text-2xl lg:text-5xl font-bold lg:leading-[62px] leading-12">
+					<p class="text-3xl lg:text-5xl font-bold lg:leading-[62px]  md:pt-0 leading-12">
 						{{ item.imageText1 }}
 						<span  class="text-neutral"> {{ item.imageText2 }} </span> <br>
 						<span>{{ item.imageText3 }} </span> <br>
 						<span class="text-neutral">{{ item.imageText4 }} </span>
 					</p>
-					<div class="btn  opacity-0 mt-6 py-2 rounded-lg text-lg px-6">Shop now</div>
+					<div class="btn  hidden md:block mt-6 py-2 rounded-lg text-lg px-6">Shop now</div>
 				</div>
 			</div>
 		</div>

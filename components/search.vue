@@ -1,5 +1,5 @@
 <template>
-	<div class="md:h-[100%] h-[90%]  flex items-center justify-center relative  w-full">
+	<div class="md:h-[100%] h-[90%]  flex items-center justify-start md:justify-center relative  w-full">
 		<input
 			type="search"
 			name=""

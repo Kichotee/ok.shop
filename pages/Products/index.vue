@@ -1,12 +1,9 @@
 <template class="page">
-    <div class="grid md:grid-cols-4 grid-cols-2 gap-4 z-20 relative ">
+    <div class="grid md:grid-cols-4 grid-cols-2 gap-4 md:gap-4 z-20 relative w-full pl-4 pr-2">
         <div  v-for="p in productStore.products.data">
             <ProductCards  :product="p"></ProductCards>
     </div>
-    <div class="absolute top-[40%] z-20">
-
-      
-    </div>
+  
    
     </div>
 </template>
