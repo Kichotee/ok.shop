@@ -5,7 +5,7 @@
 			isLoading
 		"
 	/>
-	<div class="h-max" >
+	<div class="h-max" v-else>
 		<div id="body-items" class="h-max">
 			<header
 				class=" bg-[#fff] fixed z-20 w-full h-[8%] top-0 md:h-[12%]"
