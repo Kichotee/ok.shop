@@ -1,7 +1,7 @@
 <template>
 	
 		<div
-			class="card text-left flex gap-2 flex-col hover:scale-105 duration-500 relative z-20 md:w-full  md:h-[40vh]"
+			class="card text-left flex gap-2 flex-col h-[40vh] hover:scale-105 duration-500 relative z-20 md:w-full  md:h-[40vh]"
 			
 		><NuxtLink class="w-full h-[50%]" :to="`/products/${product.id}`">
 		
